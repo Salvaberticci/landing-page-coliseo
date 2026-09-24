@@ -69,7 +69,9 @@ http://localhost/coliseo/index.html
 
 ## Despliegue
 
-El sitio se publica estáticamente (Vercel):
+El sitio se publica estáticamente en **Vercel**: **https://coliseo-gamma.vercel.app**
+
+Repositorio: **https://github.com/Salvaberticci/landing-page-coliseo**
 
 ```bash
 vercel --prod
