@@ -1,0 +1,83 @@
+# EL COLISEO — Academia de Artes Marciales Mixtas
+
+Landing page oficial de **El Coliseo**, academia de artes marciales mixtas ubicada en el **C.C. Murachi, Valera, Estado Trujillo (Venezuela)**.
+
+Deportes de combate moderno que combinan técnicas de diversas disciplinas — **Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal** — para **niños, jóvenes y adultos** en diferentes horarios.
+
+> Sitio estático (HTML + CSS + JavaScript), sin backend: se puede abrir directamente en el navegador o desplegar en cualquier hosting.
+
+## Contenido
+
+| Sección | Descripción |
+|---|---|
+| **Hero** | Vídeo de las clases, propuesta de valor y acceso rápido a reservar |
+| **El Coliseo en cifras** | Disciplinas, grupos de edad, palmarés del Sensei y credenciales |
+| **Disciplinas de combate** | 4 tarjetas con vídeo propio: Jiu-Jitsu, Kickboxing, Boxeo y MMA |
+| **El código del guerrero** | Manifiesto: *Familia, Honor, Fuerza y Disciplina* |
+| **Testimonios** | Reseñas de practicantes y competidores |
+| **Horarios** | Parrilla semanal con grupos por edad y nivel |
+| **Entrenadores & Dojo** | Ficha del **Sensei Marcos Castellanos** y su palmarés |
+| **Clase de prueba** | Formulario validado que envía la solicitud a WhatsApp |
+| **Contacto & Ubicación** | WhatsApp, teléfono, correo, dirección y mapa (OpenStreetMap) |
+
+## Sensei
+
+**Marcos Castellanos** — Director técnico:
+
+- Campeón Nacional en Kickboxing
+- SubCampeón de los Juegos Panamericanos Brasil 2022
+- Medallista Internacional en Jiu-Jitsu Brasileño
+- Cinturón Amarillo en la disciplina Capoeira
+- Preparador físico certificado
+
+## Características
+
+- **Responsive** (móvil, tableta y escritorio), probado a 375 px sin scroll horizontal.
+- Formulario con validación en línea, confirmación con referencia (`COL-xxxx`) y **envío automático a WhatsApp** (`+58 414-7308002`) con todos los datos de la solicitud.
+- Las solicitudes también se guardan en `localStorage` (`coliseo_reservas`) como respaldo local.
+- Vídeos de las disciplinas en loop, pausados automáticamente cuando están fuera de pantalla (`IntersectionObserver`).
+- Navegación con menú móvil, scrollspy, contadores animados, ticker horizontal y modal legal (términos y privacidad).
+- SEO básico: `title`, `meta description` y favicon con el logo.
+- Sin dependencias de build: Tailwind se carga por CDN con la configuración del proyecto *inline*.
+
+## Estructura
+
+```
+coliseo/
+├── index.html      # página lista para publicar
+├── code.html       # copia de trabajo (mismo contenido que index.html)
+├── logo.png        # logo y favicon
+├── marcos.png      # foto del Sensei
+├── academy.mp4     # vídeo de clases (hero)
+├── jiujitsu.mp4    # vídeo de la disciplina
+├── kickboxing.mp4
+├── boxeo.mp4
+├── mma.mp4
+├── screen.png      # captura del sitio
+├── DESIGN.md       # tokens de diseño (colores/tipografía)
+└── README.md
+```
+
+## Ejecutar localmente
+
+Abrir `index.html` en el navegador, o con el servidor local de XAMPP/Apache:
+
+```bash
+# Apache de XAMPP apuntando a C:\xampp\htdocs\webs-negocios\coliseo
+http://localhost/coliseo/index.html
+```
+
+## Despliegue
+
+El sitio se publica estáticamente (Vercel):
+
+```bash
+vercel --prod
+```
+
+## Contacto
+
+- **WhatsApp / Teléfono:** +58 414-7308002
+- **Correo:** contacto@coliseomartialarts.com
+- **Dirección:** C.C. Murachi, Valera, Estado Trujillo, Venezuela
+- **Horario:** Lun–Vie 06:30–22:00 · Sáb 08:30–15:00 · Dom 10:00–13:00 (VET, UTC-4)

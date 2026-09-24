@@ -1,0 +1,1394 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>EL COLISEO // Academia de Artes Marciales Mixtas en Valera</title>
+<link href="logo.png" rel="icon" type="image/png"/><link href="logo.png" rel="apple-touch-icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&amp;family=Oswald:wght@400;500;600;700;800&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html { scroll-behavior: smooth; scroll-padding-top: 9.5rem; }
+    html, body { margin: 0; padding: 0; background-color: #08080a; }
+    body { overscroll-behavior: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #08080a; }
+  ::-webkit-scrollbar-thumb { background: #dc2626; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes reveal-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .marquee-track { animation: marquee 28s linear infinite; }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+  [data-bar] > span { transform-origin: left; transform: scaleX(0); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+  [data-bar].is-visible > span { transform: scaleX(1); }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 2px;
+    background: #dc2626; box-shadow: 0 0 8px #dc2626; transform: scaleX(0); transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); }
+  .nav-link.is-active { color: #fff; }
+  :focus-visible { outline: 2px solid #dc2626; outline-offset: 2px; }
+  select { background-image: none; }
+  .field-error { box-shadow: inset 3px 0 0 0 #dc2626; border-color: #dc2626 !important; }
+  .is-hidden { display: none !important; }
+
+  .clip-angle {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  }
+  .clip-angle-left {
+    clip-path: polygon(18px 0, 100% 0, 100% 100%, 0 100%, 0 18px);
+  }
+  .clip-badge {
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .clip-tag {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+  .text-stroke-red {
+    -webkit-text-stroke: 1.5px rgba(220, 38, 38, 0.45);
+    color: transparent;
+  }
+  .text-stroke-white {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
+  }
+  .red-scanline {
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#ffb4ab",
+          "primary-container": "#dc2626",
+          "crimson-neon": "#ef4444",
+          "crimson-deep": "#991b1b",
+          "background": "#08080a",
+          "surface": "#121214",
+          "surface-container-lowest": "#0d0d0f",
+          "surface-container-low": "#16161a",
+          "surface-container": "#1a1a1f",
+          "surface-container-high": "#222228",
+          "surface-container-highest": "#2e2e36",
+          "on-surface": "#e5e1e4",
+          "on-surface-variant": "#a1a1aa",
+          "secondary": "#a1a1aa",
+          "tactical-grey": "#26262b",
+          "steel": "#71717a",
+          "tertiary": "#f7be1d",
+          "tertiary-fixed-dim": "#f7be1d",
+          "gold": "#eab308",
+        },
+        fontSize: {
+          "display": ["72px", { lineHeight: "76px", fontWeight: "700", letterSpacing: "-0.02em" }],
+          "display-mobile": ["48px", { lineHeight: "52px", fontWeight: "700", letterSpacing: "-0.01em" }],
+          "headline-lg": ["40px", { lineHeight: "46px", fontWeight: "600", letterSpacing: "-0.01em" }],
+          "headline-md": ["28px", { lineHeight: "34px", fontWeight: "600" }],
+          "headline-sm": ["22px", { lineHeight: "28px", fontWeight: "500", letterSpacing: "0.02em" }],
+          "title": ["18px", { lineHeight: "24px", fontWeight: "600", letterSpacing: "0.04em" }],
+          "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em" }],
+          "body-md": ["15px", { lineHeight: "22px" }],
+          "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em" }],
+          "label-lg": ["14px", { lineHeight: "18px", fontWeight: "600", letterSpacing: "0.08em" }],
+          "label-md": ["12px", { lineHeight: "16px", fontWeight: "500", letterSpacing: "0.1em" }],
+          "label-sm": ["10px", { lineHeight: "14px", fontWeight: "500", letterSpacing: "0.12em" }],
+        },
+        fontFamily: {
+          "display": ["Oswald", "sans-serif"],
+          "headline-lg": ["Oswald", "sans-serif"],
+          "headline-md": ["Oswald", "sans-serif"],
+          "headline-sm": ["Oswald", "sans-serif"],
+          "title": ["Oswald", "sans-serif"],
+          "label-lg": ["Oswald", "sans-serif"],
+          "label-md": ["Oswald", "sans-serif"],
+          "label-sm": ["Oswald", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "mono": ["Space Mono", "monospace"],
+        }
+      },
+    },
+  }
+</script>
+</head>
+<body class="bg-[#08080a] text-on-surface antialiased selection:bg-primary-container selection:text-white font-body-md overflow-x-hidden">
+<!-- HEADER / NAV BAR -->
+<header class="sticky top-0 w-full z-40 bg-[#08080a]/90 backdrop-blur-xl border-b border-red-950/40 transition-all">
+<div class="h-28 sm:h-36 w-full max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group relative" href="#inicio" aria-label="Coliseo - Volver al inicio">
+<div class="relative">
+<div class="absolute -inset-1 bg-red-600/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="relative h-24 sm:h-32 w-auto object-contain" src="logo.png" alt="Coliseo Martial Arts Academy"/>
+</div>
+
+</a>
+<!-- Tactical Navigation Menu -->
+<nav id="main-nav" class="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] font-label-md tracking-[0.14em] uppercase whitespace-nowrap" aria-label="Navegación principal">
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="inicio" href="#inicio">
+<span class="text-primary-container mr-1 text-[10px] font-mono">01.</span>INICIO
+</a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="disciplinas" href="#disciplinas">
+<span class="text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">02.</span>DISCIPLINAS
+      </a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="horarios" href="#horarios">
+<span class="text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">03.</span>HORARIOS
+      </a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="entrenadores" href="#entrenadores">
+<span class="text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">04.</span>ENTRENADORES
+      </a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="contacto" href="#contacto">
+<span class="text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">05.</span>CONTACTO
+      </a>
+</nav>
+<!-- Header CTA -->
+<div class="flex items-center gap-3">
+<a class="relative hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary-container hover:bg-red-600 text-white text-[11px] font-label-lg tracking-[0.18em] uppercase font-bold clip-angle whitespace-nowrap transition-all duration-300 shadow-[0_0_24px_rgba(220,38,38,0.45)] hover:shadow-[0_0_35px_rgba(239,68,68,0.65)] active:scale-95 group" href="#agenda-clase">
+<span class="whitespace-nowrap">CLASE DE PRUEBA</span>
+<span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">bolt</span>
+</a>
+<button id="nav-toggle" class="lg:hidden w-11 h-11 flex items-center justify-center border border-white/10 text-on-surface hover:border-primary-container hover:text-primary-container transition-colors" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<div id="mobile-nav" class="is-hidden lg:hidden border-t border-red-950/40 bg-[#08080a] px-6 py-4">
+<ul class="flex flex-col gap-1 text-[13px] font-label-md tracking-[0.18em] uppercase">
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="inicio" href="#inicio"><span class="font-mono text-[10px] text-primary-container">01.</span>INICIO</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="disciplinas" href="#disciplinas"><span class="font-mono text-[10px] text-neutral-600">02.</span>DISCIPLINAS</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="horarios" href="#horarios"><span class="font-mono text-[10px] text-neutral-600">03.</span>HORARIOS</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="entrenadores" href="#entrenadores"><span class="font-mono text-[10px] text-neutral-600">04.</span>ENTRENADORES &amp; DOJO</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="contacto" href="#contacto"><span class="font-mono text-[10px] text-neutral-600">05.</span>CONTACTO</a></li>
+<li class="pt-4"><a class="flex items-center justify-center gap-2 w-full py-3 bg-primary-container text-white font-label-lg tracking-[0.2em] uppercase" href="#agenda-clase">CLASE DE PRUEBA GRATUITA<span class="material-symbols-outlined text-[16px]">bolt</span></a></li>
+</ul>
+</div>
+</header>
+<main class="w-full bg-[#08080a]"><div class="flex flex-col w-full">
+<!-- HERO BRUTALISTA DE IMPACTO -->
+<section class="relative w-full overflow-hidden bg-surface-container-lowest py-16 lg:py-24" id="inicio">
+<!-- Ambient Red Glows -->
+<div class="absolute -top-32 left-1/4 w-96 h-96 bg-primary-container/15 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="absolute top-1/2 -right-20 w-80 h-80 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
+<!-- Tactical Top Tag -->
+<div class="flex items-center gap-3 mb-6">
+<span class="inline-flex items-center px-2 py-0.5 bg-primary-container text-white font-mono text-[10px] tracking-widest uppercase">DOJO // SEC-01</span>
+<span class="text-secondary font-mono text-[11px] tracking-widest uppercase">// ARTES MARCIALES MIXTAS · NIÑOS, JÓVENES Y ADULTOS</span>
+</div>
+<!-- Grid Hero split asymmetric -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+<!-- Text Column (Col 7) -->
+<div class="lg:col-span-7 flex flex-col space-y-6">
+<h1 class="font-display text-display-mobile md:text-display uppercase tracking-tight text-on-surface leading-none">
+            Academia de artes<br/>
+marciales <span class="text-primary-container underline decoration-primary-container/30 decoration-8 underline-offset-8">mixtas</span><br/>
+            El Coliseo.
+          </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-xl leading-relaxed">
+            Deportes de combate moderno que combinan técnicas de diversas disciplinas: Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal. Una academia especialmente diseñada para niños, jóvenes y adultos que desean desarrollar sus habilidades, destrezas y conocimientos como actividad complementaria y/o competitiva.
+          </p>
+<!-- CTAs Bar -->
+<div class="pt-4 flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-3 px-8 py-4 bg-primary-container hover:bg-crimson-neon text-white font-label-lg text-label-lg tracking-widest uppercase shadow-xl transition-all duration-200 active:scale-95 group" href="#agenda-clase">
+<span>RESERVAR SESIÓN INICIAL</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-8 py-4 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg tracking-widest uppercase transition-all duration-200" href="#disciplinas">
+<span class="material-symbols-outlined text-primary-container text-[18px]">sports_martial_arts</span>
+<span>EXPLORAR SISTEMAS</span>
+</a>
+</div>
+<!-- Micro Quick Specs -->
+<div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
+<div class="bg-surface-container-low p-3">
+<span class="font-mono text-[10px] tracking-wider text-secondary block uppercase">Disciplinas</span>
+<span class="font-title text-title text-on-surface block mt-1">5 SISTEMAS</span>
+</div>
+<div class="bg-surface-container-low p-3">
+<span class="font-mono text-[10px] tracking-wider text-secondary block uppercase">Público</span>
+<span class="font-title text-title text-on-surface block mt-1">TODAS LAS EDADES</span>
+</div>
+<div class="bg-surface-container-low p-3">
+<span class="font-mono text-[10px] tracking-wider text-secondary block uppercase">Ubicación</span>
+<span class="font-title text-title text-on-surface block mt-1">C.C. MURACHI, VALERA</span>
+</div>
+</div>
+</div>
+<!-- Coach Card / Visual Column (Col 5) -->
+<div class="lg:col-span-5 relative">
+<!-- Geometric Underlay Box -->
+<div class="absolute -inset-2 bg-gradient-to-tr from-primary-container/30 to-surface-container-high -rotate-1 rounded-none"></div>
+<div class="relative bg-surface-container p-4 overflow-hidden shadow-2xl">
+<!-- Combat Hero Visual -->
+<div class="relative w-full h-[460px] overflow-hidden bg-surface-container-lowest">
+<video class="w-full h-full object-cover contrast-125 hover:scale-105 transition-transform duration-700" src="academy.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo promocional Coliseo Academy"></video>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-black/30"></div>
+<!-- Badges Overlay -->
+<div class="absolute top-4 left-4 flex flex-col gap-1.5">
+<span class="px-2.5 py-1 bg-primary-container text-white font-mono text-[10px] tracking-widest uppercase">CLASES EN VIVO // ACADEMIA</span>
+<span class="px-2.5 py-1 bg-surface-container-highest/90 backdrop-blur-md text-on-surface font-mono text-[10px] tracking-widest uppercase">NIÑOS · JÓVENES · ADULTOS</span>
+</div>
+<!-- Bottom Profile Banner -->
+<div class="absolute bottom-4 left-4 right-4 bg-surface-container-low/95 backdrop-blur-md p-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface tracking-wide">CLASES DIARIAS</h3>
+<p class="font-mono text-label-sm text-secondary tracking-widest uppercase">BOXEO · KICKBOXING · BJJ · DEFENSA PERSONAL</p>
+</div>
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Telemetry Footer -->
+<div class="mt-3 pt-3 flex items-center justify-between font-mono text-label-sm text-secondary tracking-widest uppercase">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                ESTADO: CLASES EN CURSO
+              </span>
+<span class="text-tertiary-fixed-dim">ESCUELA MIXTA · VALERA</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TICKER / BANNER CONTINUO DE ALTO IMPACTO -->
+<div class="w-full bg-primary-container overflow-hidden py-3 shadow-md relative z-20 select-none marquee-wrap">
+<div class="flex whitespace-nowrap marquee-track w-max">
+<div class="flex items-center font-display text-headline-sm uppercase tracking-widest text-white space-x-8 pr-8 w-max">
+<span>// KICKBOXING // LETHAL STRIKING</span>
+<span class="text-surface-container-lowest">///</span>
+<span>JIU-JITSU BRASILEÑO // ARTE SUAVE</span>
+<span class="text-surface-container-lowest">///</span>
+<span>BOXEO // CIENCIA DE PUÑOS</span>
+<span class="text-surface-container-lowest">///</span>
+<span>MMA // ARTES MARCIALES MIXTAS</span>
+<span class="text-surface-container-lowest">///</span>
+<span>DEFENSA PERSONAL // AUTOPROTECCIÓN</span>
+<span class="text-surface-container-lowest">///</span>
+<span>// KICKBOXING // LETHAL STRIKING</span>
+<span class="text-surface-container-lowest">///</span>
+<span>JIU-JITSU BRASILEÑO // ARTE SUAVE</span>
+<span class="text-surface-container-lowest">///</span>
+<span>BOXEO // CIENCIA DE PUÑOS</span>
+<span class="text-surface-container-lowest">///</span>
+<span>MMA // ARTES MARCIALES MIXTAS</span>
+<span class="text-surface-container-lowest">///</span>
+<span>DEFENSA PERSONAL // AUTOPROTECCIÓN</span>
+<span class="text-surface-container-lowest">///</span>
+</div>
+</div>
+</div>
+<!-- MÉTRICAS DEL LINAJE MARCIAL (4 Columnas Tácticas) -->
+<section class="w-full bg-surface-container-low py-16">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// DATA // LA ACADEMIA EN CIFRAS</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">EL COLISEO EN CIFRAS</h2>
+</div>
+<p class="font-mono text-label-sm text-secondary tracking-widest uppercase">ACADEMIA DE ARTES MARCIALES MIXTAS · VALERA</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Stat 1 -->
+<div class="bg-surface-container p-6 relative group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-3">DISCIPLINAS IMPARTIDAS</span>
+<div class="font-display text-display text-on-surface leading-none mb-2"><span data-count="5">5</span></div>
+<p class="font-title text-title text-on-surface uppercase mb-1">SISTEMAS DE COMBATE</p>
+<p class="font-body-sm text-body-sm text-secondary">Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal en un mismo tatami.</p>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container p-6 relative group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-3">GRUPOS POR EDAD</span>
+<div class="font-display text-display text-tertiary-fixed-dim leading-none mb-2"><span data-count="3">3</span></div>
+<p class="font-title text-title text-on-surface uppercase mb-1">NIÑOS · JÓVENES · ADULTOS</p>
+<p class="font-body-sm text-body-sm text-secondary">Grupos diferenciados por edad y nivel, en diferentes horarios de la semana.</p>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container p-6 relative group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-3">PALMARÉS DEL SENSEI</span>
+<div class="font-display text-display text-on-surface leading-none mb-2"><span data-count="2022">2022</span></div>
+<p class="font-title text-title text-on-surface uppercase mb-1">SUBCAMPEÓN PANAMERICANO</p>
+<p class="font-body-sm text-body-sm text-secondary">Juegos Panamericanos Brasil 2022. También Campeón Nacional en Kickboxing.</p>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface-container p-6 relative group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-3">CREDENCIALES</span>
+<div class="font-display text-display text-primary-container leading-none mb-2"><span data-count="5" data-suffix="+" data-suffix-class="text-white">5+</span></div>
+<p class="font-title text-title text-on-surface uppercase mb-1">HABILITACIONES</p>
+<p class="font-body-sm text-body-sm text-secondary">Medallista internacional en Jiu-Jitsu Brasileño, cinturón amarillo en Capoeira y preparador físico certificado.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- DISCIPLINAS DE COMBATE (Arsenal / Especialización) -->
+<section class="w-full bg-surface-container-lowest py-20 relative" id="disciplinas">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// ARSENAL TÁCTICO // DOJO CODEX</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">DISCIPLINAS DE COMBATE</h2>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">
+            Deportes de combate moderno que combinan técnicas de diversas disciplinas para niños, jóvenes y adultos en diferentes horarios: Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary-container block"></span>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase">GRUPOS POR EDAD Y NIVEL</span>
+</div>
+</div>
+<!-- Grid 4 Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- BJJ Card -->
+<div class="bg-surface-container flex flex-col justify-between group hover:bg-surface-container-high transition-all duration-300 shadow-xl overflow-hidden relative">
+<div>
+<div class="relative h-56 w-full overflow-hidden bg-surface-container-lowest">
+<video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="jiujitsu.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Clase de Jiu-Jitsu Brasileño en el tatami del Coliseo"></video>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 px-2 py-1 bg-surface-container-lowest font-mono text-[10px] text-primary tracking-widest uppercase">SYS-01 // GRAPPLING</span>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">JIU-JITSU BRASILEÑO</h3>
+</div>
+<span class="font-mono text-label-sm text-primary tracking-widest uppercase block mb-3">// "EL ARTE SUAVE" (GI &amp; NO-GI)</span>
+<p class="font-body-sm text-body-sm text-secondary mb-6 leading-relaxed">
+                Dominio posicional, palancas articulares y estrangulaciones. La ciencia de neutralizar oponentes de mayor envergadura mediante el uso impecable de la física.
+              </p>
+<!-- Metrics -->
+<div class="space-y-3 pt-3 bg-surface-container-low p-4 mb-6">
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>DEMANDA TÉCNICA</span>
+<span class="text-on-surface">98%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[98%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>RESISTENCIA AERÓBICA</span>
+<span class="text-on-surface">92%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[92%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0">
+<a class="w-full py-3 bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-white font-label-md text-label-md uppercase tracking-widest flex items-center justify-center gap-2 transition-colors" href="#agenda-clase">
+<span>PLAN DE COMBATE</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Kickboxing Card -->
+<div class="bg-surface-container flex flex-col justify-between group hover:bg-surface-container-high transition-all duration-300 shadow-xl overflow-hidden relative">
+<div>
+<div class="relative h-56 w-full overflow-hidden bg-surface-container-lowest">
+<video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="kickboxing.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Clase de Kickboxing con golpeo y patadas"></video>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 px-2 py-1 bg-surface-container-lowest font-mono text-[10px] text-primary tracking-widest uppercase">SYS-02 // STRIKING</span>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">KICKBOXING</h3>
+</div>
+<span class="font-mono text-label-sm text-primary tracking-widest uppercase block mb-3">// "ARTE DEL GOLPEO COMBINADO"</span>
+<p class="font-body-sm text-body-sm text-secondary mb-6 leading-relaxed">
+                Golpeo demoledor con puños, patadas y rodillas en combinaciones rápidas. Trabajo de pie, distancia, barridos y acondicionamiento corporal sin concesiones.
+              </p>
+<!-- Metrics -->
+<div class="space-y-3 pt-3 bg-surface-container-low p-4 mb-6">
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>PODER DE IMPACTO</span>
+<span class="text-on-surface">95%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[95%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>CONDICIONAMIENTO FÍSICO</span>
+<span class="text-on-surface">96%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[96%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0">
+<a class="w-full py-3 bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-white font-label-md text-label-md uppercase tracking-widest flex items-center justify-center gap-2 transition-colors" href="#agenda-clase">
+<span>PLAN DE COMBATE</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Boxeo Card -->
+<div class="bg-surface-container flex flex-col justify-between group hover:bg-surface-container-high transition-all duration-300 shadow-xl overflow-hidden relative">
+<div>
+<div class="relative h-56 w-full overflow-hidden bg-surface-container-lowest">
+<video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="boxeo.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Clase de Boxeo con trabajo de saco y sparring"></video>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 px-2 py-1 bg-surface-container-lowest font-mono text-[10px] text-primary tracking-widest uppercase">SYS-03 // PUGILISMO</span>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">BOXEO</h3>
+</div>
+<span class="font-mono text-label-sm text-primary tracking-widest uppercase block mb-3">// "LA DULCE CIENCIA DE PUÑOS"</span>
+<p class="font-body-sm text-body-sm text-secondary mb-6 leading-relaxed">
+                Juego de pies milimétrico, esquivas de cintura, cabeceo defensivo y contragolpes quirúrgicos orientados a la máxima economía de movimiento.
+              </p>
+<!-- Metrics -->
+<div class="space-y-3 pt-3 bg-surface-container-low p-4 mb-6">
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>VELOCIDAD &amp; REFLEJOS</span>
+<span class="text-on-surface">94%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[94%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>AGILIDAD DE TRASLADO</span>
+<span class="text-on-surface">90%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[90%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0">
+<a class="w-full py-3 bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-white font-label-md text-label-md uppercase tracking-widest flex items-center justify-center gap-2 transition-colors" href="#agenda-clase">
+<span>PLAN DE COMBATE</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- MMA Card -->
+<div class="bg-surface-container flex flex-col justify-between group hover:bg-surface-container-high transition-all duration-300 shadow-xl overflow-hidden relative">
+<div>
+<div class="relative h-56 w-full overflow-hidden bg-surface-container-lowest">
+<video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="mma.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Entrenamiento de MMA, artes marciales mixtas"></video>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<span class="absolute top-3 left-3 px-2 py-1 bg-primary-container font-mono text-[10px] text-white tracking-widest uppercase">SYS-04 // COMBATE MIXTO</span>
+</div>
+<div class="p-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">MMA</h3>
+</div>
+<span class="font-mono text-label-sm text-primary tracking-widest uppercase block mb-3">// "ARTES MARCIALES MIXTAS"</span>
+<p class="font-body-sm text-body-sm text-secondary mb-6 leading-relaxed">
+                La integración de todas las disciplinas: golpeo de Boxeo y Kickboxing, derribos y defensa personal, más suelo de Jiu-Jitsu Brasileño. De pie, en la reja y en el suelo.
+              </p>
+<!-- Metrics -->
+<div class="space-y-3 pt-3 bg-surface-container-low p-4 mb-6">
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>INTEGRACIÓN DE DISCIPLINAS</span>
+<span class="text-on-surface">100%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[100%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono text-[11px] text-secondary mb-1">
+<span>DEMANDA METABÓLICA</span>
+<span class="text-on-surface">97%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-1 bg-primary-container w-[97%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-0">
+<a class="w-full py-3 bg-surface-container-highest hover:bg-primary-container text-on-surface hover:text-white font-label-md text-label-md uppercase tracking-widest flex items-center justify-center gap-2 transition-colors" href="#agenda-clase">
+<span>PLAN DE COMBATE</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- EL CÓDIGO DEL GUERRERO (Manifiesto / 4 Pilares) -->
+<section class="w-full bg-surface-container-low py-20 relative">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="max-w-3xl mb-16">
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// PHILOSOPHY // DOJO CODEX</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">EL CÓDIGO DEL GUERRERO</h2>
+<p class="font-body-lg text-body-lg text-secondary mt-3">
+          En Coliseo no toleramos el ego ni la violencia desmedida. Nuestro código se sostiene sobre cuatro valores: FAMILIA, HONOR, FUERZA y DISCIPLINA. Con ellos entrenamos para dominar la fuerza, honrar al compañero de entrenamiento y forjar una mente inquebrantable ante cualquier adversidad.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Pilar 01 -->
+<div class="bg-surface-container p-8 relative flex flex-col justify-between">
+<div>
+<div class="font-display text-display text-primary-container/40 leading-none mb-4">01</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">FAMILIA</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Nadie asciende solo de graduación. El equipo es el yunque sobre el cual se templa tu acero: aquí se comparte el sudor, la derrota y la gloria como una sola familia.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t-0 bg-surface-container-low p-3 font-mono text-[11px] text-secondary uppercase tracking-widest">
+            ARTÍCULO I // LEALTAD AL EQUIPO
+          </div>
+</div>
+<!-- Pilar 02 -->
+<div class="bg-surface-container p-8 relative flex flex-col justify-between">
+<div>
+<div class="font-display text-display text-primary-container/40 leading-none mb-4">02</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">HONOR</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+              La reverencia al tatami y al oponente es innegociable. El mayor respeto se demuestra entrenando con entrega total y cuidando siempre la integridad del compañero.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t-0 bg-surface-container-low p-3 font-mono text-[11px] text-secondary uppercase tracking-widest">
+            ARTÍCULO II // SALUDO DE TATAMI
+          </div>
+</div>
+<!-- Pilar 03 -->
+<div class="bg-surface-container p-8 relative flex flex-col justify-between">
+<div>
+<div class="font-display text-display text-primary-container/40 leading-none mb-4">03</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">FUERZA</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Forjamos fuerza física y mental sin arrogancia: dominamos la potencia, resistimos la frustración y salimos de cada sesión más sólidos que el día anterior.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t-0 bg-surface-container-low p-3 font-mono text-[11px] text-secondary uppercase tracking-widest">
+            ARTÍCULO III // FORJA DEL CARÁCTER
+          </div>
+</div>
+<!-- Pilar 04 -->
+<div class="bg-surface-container p-8 relative flex flex-col justify-between">
+<div>
+<div class="font-display text-display text-primary-container/40 leading-none mb-4">04</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">DISCIPLINA</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+              La motivación es efímera; la disciplina permanece. Presentarse cada día, repetir el fundamento mil veces y sostener el proceso cuando nadie mira.
+            </p>
+</div>
+<div class="pt-6 mt-6 border-t-0 bg-surface-container-low p-3 font-mono text-[11px] text-secondary uppercase tracking-widest">
+            ARTÍCULO IV // CONSTANCIA ABSOLUTA
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- TESTIMONIOS DE LA ARENA -->
+<section class="w-full bg-surface-container-lowest py-20 relative">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// FIGHTER VERIFICATIONS // REVIEWS</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">TESTIMONIOS DE LA ARENA</h2>
+</div>
+<div class="flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="font-mono text-label-sm text-secondary ml-2 tracking-wider">4.98 / 5.0 (310+ RESEÑAS)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonio 1 -->
+<div class="bg-surface-container p-8 flex flex-col justify-between shadow-lg relative">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] text-primary tracking-widest uppercase">ATLETA BJJ FAJA MORADA</span>
+<span class="material-symbols-outlined text-primary-container text-[24px]">format_quote</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              "Llegué a Coliseo tras 4 años estancado en otro gimnasio. El nivel de detalle biomecánico que explican aquí no tiene comparación en Venezuela. En 18 meses clasifiqué para los Panamericanos IBJJF en Bogotá."
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center font-display text-title text-primary-container">
+              MR
+            </div>
+<div>
+<h4 class="font-title text-title uppercase text-on-surface">MARCOS RIVAS</h4>
+<p class="font-mono text-[10px] text-secondary tracking-widest uppercase">COMPETIDOR ADULTO -77KG</p>
+</div>
+</div>
+</div>
+<!-- Testimonio 2 -->
+<div class="bg-surface-container p-8 flex flex-col justify-between shadow-lg relative">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] text-primary tracking-widest uppercase">PRACTICANTE NO-PRO // KICKBOXING</span>
+<span class="material-symbols-outlined text-primary-container text-[24px]">format_quote</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              "Soy directivo de tecnología y buscaba desconectar del estrés corporativo. Temía el ambiente machista de los gimnasios de lucha típicos, pero en Coliseo la camaradería y el respeto mutuo son absolutos. Mi salud mental y física es otra."
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center font-display text-title text-primary-container">
+              CG
+            </div>
+<div>
+<h4 class="font-title text-title uppercase text-on-surface">CARLOS GIL</h4>
+<p class="font-mono text-[10px] text-secondary tracking-widest uppercase">PROGRAMA EJECUTIVO &amp; STRIKING</p>
+</div>
+</div>
+</div>
+<!-- Testimonio 3 -->
+<div class="bg-surface-container p-8 flex flex-col justify-between shadow-lg relative">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-mono text-[11px] text-primary tracking-widest uppercase">COMPETIDORA // KICKBOXING</span>
+<span class="material-symbols-outlined text-primary-container text-[24px]">format_quote</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              "Mi preparación para el campeonato nacional se hizo íntegramente en Coliseo. El sparring controlado, la estrategia de esquinas y el trabajo técnico del Sensei fueron impecables. Victoria por nocaut en el Round 2."
+            </p>
+</div>
+<div class="pt-6 mt-6 flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center font-display text-title text-primary-container">
+              SL
+            </div>
+<div>
+<h4 class="font-title text-title uppercase text-on-surface">SOFÍA LARREA</h4>
+<p class="font-mono text-[10px] text-secondary tracking-widest uppercase">MEDALLISTA NACIONAL // KICKBOXING</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- HORARIOS -->
+<section class="w-full bg-surface-container-low py-20 relative" id="horarios">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// OPERATIVA DE DOJO // SCHEDULE</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">HORARIOS</h2>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">Grupos diarios por disciplina, edad y nivel para niños, jóvenes y adultos. Consulta horarios y disponibilidad antes de tu primera clase.</p>
+</div>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase">FUSO HORARIO: VET (UTC-4) // VALERA</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Schedule Table -->
+<div class="lg:col-span-12 bg-surface-container border border-surface-container-highest overflow-x-auto">
+<div class="px-6 py-4 bg-surface-container-high flex items-center justify-between">
+<span class="font-title text-title uppercase text-on-surface">PARRILLA SEMANAL DE SESIONES</span>
+<span class="font-mono text-label-sm text-primary tracking-widest uppercase">GRUPOS POR EDAD</span>
+</div>
+<table class="w-full min-w-[560px] text-left font-body-md text-body-md">
+<thead class="bg-surface-container-lowest">
+<tr class="font-mono text-label-sm text-secondary tracking-widest uppercase">
+<th class="px-6 py-3 font-medium">Franja</th>
+<th class="px-6 py-3 font-medium">Sesión</th>
+<th class="px-6 py-3 font-medium">Grupo</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">06:30 – 08:00</td><td class="px-6 py-3 text-on-surface uppercase">Jiu-Jitsu Brasileño // Fundamentos</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">TODOS</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">10:00 – 11:30</td><td class="px-6 py-3 text-on-surface uppercase">Boxeo &amp; Acondicionamiento</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">TODOS</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">15:00 – 16:00</td><td class="px-6 py-3 text-on-surface uppercase">Jóvenes // Kickboxing &amp; Boxeo</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">JÓVENES 13-17</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">16:00 – 17:00</td><td class="px-6 py-3 text-on-surface uppercase">Niños // Jiu-Jitsu &amp; Defensa Personal</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">NIÑOS 6-12</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">17:00 – 18:30</td><td class="px-6 py-3 text-on-surface uppercase">Kickboxing // Golpeo &amp; Patadas</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">TODOS</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">19:00 – 20:30</td><td class="px-6 py-3 text-on-surface uppercase">MMA // Integración Pie &amp; Suelo</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">TODOS</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-primary whitespace-nowrap">20:30 – 22:00</td><td class="px-6 py-3 text-on-surface uppercase">Fight Team // Sparring Controlado</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-primary-container font-mono text-label-sm text-white uppercase">SOLO COMPETIDORES</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-tertiary whitespace-nowrap">SÁB 08:30 – 15:00</td><td class="px-6 py-3 text-on-surface uppercase">Open Mat + Seminario mensual</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">TODOS</span></td></tr>
+<tr class="hover:bg-surface-container-high transition-colors"><td class="px-6 py-3 font-mono text-label-md text-tertiary whitespace-nowrap">DOM 10:00 – 13:00</td><td class="px-6 py-3 text-on-surface uppercase">Fight Team // Estrategia de combate</td><td class="px-6 py-3"><span class="px-2 py-0.5 bg-primary-container font-mono text-label-sm text-white uppercase">INVITACIÓN</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<!-- ENTRENADORES & DOJO -->
+<section class="w-full bg-surface-container-lowest py-20 relative" id="entrenadores">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// CUADRO TÉCNICO // DIRECTOR</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">ENTRENADORES &amp; DOJO</h2>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">Academia especialmente diseñada para niños, jóvenes y adultos que desean desarrollar sus habilidades, destrezas y conocimientos como actividad complementaria y/o competitiva.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-emerald-500 block animate-pulse"></span>
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase">DIRIGIDA POR EL SENSEI CASTELLANOS</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Sensei / Director -->
+<div class="lg:col-span-5 bg-surface-container border border-surface-container-highest p-6 flex flex-col gap-4 hover:border-steel transition-colors group">
+<div class="w-full h-52 overflow-hidden bg-surface-container-lowest relative">
+<img class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" src="marcos.png" alt="Sensei Marcos Castellanos, director técnico de la academia Coliseo"/>
+<span class="absolute top-2 left-2 px-2 py-1 bg-primary-container font-mono text-[10px] text-white tracking-widest uppercase">SENSEI // DIRECTOR TÉCNICO</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface">SENSEI MARCOS CASTELLANOS</h3>
+<p class="font-mono text-label-sm text-primary tracking-widest uppercase">CAMPEÓN NACIONAL // KICKBOXING</p>
+<p class="font-body-sm text-body-sm text-secondary">Dirige la academia y supervisa la formación de niños, jóvenes y adultos en Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal.</p>
+<div class="flex flex-wrap gap-1.5 pt-2 border-t border-surface-container-highest">
+<span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary tracking-wide">Atleta e Instructor de artes marciales</span>
+<span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary tracking-wide">Cinturón negro de kickboxing</span>
+<span class="px-2 py-0.5 bg-surface-container-highest font-mono text-label-sm text-secondary tracking-wide">Cinturón Morado de BJJ</span>
+</div>
+</div>
+<!-- Palmarés del Sensei -->
+<div class="lg:col-span-7 bg-surface-container border border-surface-container-highest p-6 sm:p-8 flex flex-col justify-center">
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-6">PALMARÉS &amp; HABILITACIONES</span>
+<ul class="space-y-5">
+<li class="flex gap-4 items-start">
+<span class="font-mono text-label-md text-primary pt-1">01</span>
+<p class="font-title text-title text-on-surface uppercase">Campeón Nacional en Kickboxing</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="font-mono text-label-md text-primary pt-1">02</span>
+<p class="font-title text-title text-on-surface uppercase">SubCampeón de los Juegos Panamericanos Brasil 2022</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="font-mono text-label-md text-primary pt-1">03</span>
+<p class="font-title text-title text-on-surface uppercase">Medallista Internacional en Jiu-Jitsu Brasileño</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="font-mono text-label-md text-primary pt-1">04</span>
+<p class="font-title text-title text-on-surface uppercase">Cinturón Amarillo en la disciplina Capoeira</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="font-mono text-label-md text-primary pt-1">05</span>
+<p class="font-title text-title text-on-surface uppercase">Preparador físico certificado</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- Datos de la academia -->
+<div class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-container p-5 border-l-2 border-primary-container"><span class="font-mono text-label-sm text-secondary tracking-widest uppercase block">Ubicación</span><span class="font-title text-title text-on-surface">C.C. MURACHI, VALERA</span></div>
+<div class="bg-surface-container p-5 border-l-2 border-primary-container"><span class="font-mono text-label-sm text-secondary tracking-widest uppercase block">Público</span><span class="font-title text-title text-on-surface">NIÑOS · JÓVENES · ADULTOS</span></div>
+<div class="bg-surface-container p-5 border-l-2 border-primary-container"><span class="font-mono text-label-sm text-secondary tracking-widest uppercase block">Modalidad</span><span class="font-title text-title text-on-surface">COMPLEMENTARIA O COMPETITIVA</span></div>
+<div class="bg-surface-container p-5 border-l-2 border-primary-container"><span class="font-mono text-label-sm text-secondary tracking-widest uppercase block">Disciplinas</span><span class="font-title text-title text-on-surface">5 SISTEMAS DE COMBATE</span></div>
+</div>
+</div>
+</section>
+<!-- PISA EL TATAMI. SIN COMPROMISOS (Formulario Táctico de Alta Rápida) -->
+<section class="w-full bg-surface-container-low py-14 sm:py-20 relative" id="agenda-clase">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+<div class="bg-surface-container p-4 sm:p-8 lg:p-14 relative overflow-hidden shadow-2xl">
+<!-- Background Flare inside card -->
+<div class="absolute -right-24 -bottom-24 w-80 h-80 bg-primary-container/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center relative z-10">
+<!-- Text Info (Col 5) -->
+<div class="lg:col-span-5 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container text-white font-mono text-[10px] tracking-widest uppercase">
+              SESIÓN DE EVALUACIÓN GRATUITA
+            </div>
+<h2 class="font-display text-headline-lg uppercase text-on-surface leading-tight">
+              PISA EL TATAMI.<br/>
+<span class="text-primary-container">SIN COMPROMISOS.</span>
+</h2>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+              Tu primera sesión incluye préstamo completo de indumentaria limpia, evaluación de movilidad con uno de nuestros cinturones negros y 60 minutos de inmersión técnica real.
+            </p>
+<div class="space-y-3 font-mono text-label-sm text-secondary pt-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>SIN REQUISITO DE CONDICIÓN FÍSICA PREVIA</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>PRÉSTAMO GRATUITO DE GUANTES Y KIMONO</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>CONFIRMACIÓN INMEDIATA POR WHATSAPP</span>
+</div>
+</div>
+</div>
+<!-- Form Area (Col 7) -->
+<div class="lg:col-span-7 bg-surface-container-low p-4 sm:p-6 lg:p-8">
+<form id="trial-form" class="space-y-4" novalidate>
+<input type="hidden" id="plan-field" name="plan" value=""/>
+<p id="plan-chip" class="is-hidden flex items-center gap-2 bg-surface-container-highest px-3 py-2 font-mono text-label-sm text-on-surface uppercase tracking-widest">
+<span class="text-primary-container">PLAN:</span><span id="plan-chip-name"></span>
+<button class="ml-auto text-secondary hover:text-primary-container" type="button" id="plan-clear">QUITAR</button>
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-name">NOMBRE Y APELLIDOS *</label>
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest placeholder:text-secondary/50 focus:outline-none focus:border-primary-container" id="f-name" name="name" placeholder="Ej. Rodrigo Álvarez" required="" type="text" autocomplete="name"/>
+<p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">Indica tu nombre completo</p>
+</div>
+<div>
+<label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-phone">TELÉFONO WHATSAPP *</label>
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest placeholder:text-secondary/50 focus:outline-none focus:border-primary-container" id="f-phone" name="phone" placeholder="+58 414-7308002" required="" type="tel" inputmode="tel" autocomplete="tel"/>
+<p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">Introduce un teléfono válido (7-15 dígitos)</p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-email">CORREO ELECTRÓNICO *</label>
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest placeholder:text-secondary/50 focus:outline-none focus:border-primary-container" id="f-email" name="email" placeholder="nombre@correo.com" required="" type="email" autocomplete="email"/>
+<p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">El correo no tiene un formato válido</p>
+</div>
+<div>
+<label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-discipline">DISCIPLINA DE INTERÉS *</label>
+<select class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest focus:outline-none focus:border-primary-container" id="f-discipline" name="discipline" required="">
+<option value="">Selecciona disciplina...</option>
+<option value="Jiu-Jitsu Brasileño (Gi / No-Gi)">Jiu-Jitsu Brasileño (Gi / No-Gi)</option>
+<option value="Kickboxing">Kickboxing</option>
+<option value="Boxeo">Boxeo</option>
+<option value="MMA (Artes Marciales Mixtas)">MMA (Artes Marciales Mixtas)</option>
+<option value="Defensa Personal">Defensa Personal</option>
+<option value="Asesoramiento personalizado">Asesoramiento personalizado</option>
+</select>
+<p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">Selecciona una disciplina</p>
+</div>
+</div>
+<div>
+<span class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5">NIVEL DE EXPERIENCIA ACTUAL</span>
+<div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+<label class="bg-surface-container-lowest p-3 flex items-center gap-2 cursor-pointer hover:bg-surface-container border border-surface-container-highest has-[:checked]:border-primary-container has-[:checked]:bg-surface-container">
+<input checked="" class="text-primary-container focus:ring-0" name="experience" type="radio" value="Principiante"/>
+<span class="font-mono text-label-sm text-on-surface uppercase">PRINCIPIANTE</span>
+</label>
+<label class="bg-surface-container-lowest p-3 flex items-center gap-2 cursor-pointer hover:bg-surface-container border border-surface-container-highest has-[:checked]:border-primary-container has-[:checked]:bg-surface-container">
+<input class="text-primary-container focus:ring-0" name="experience" type="radio" value="Intermedio"/>
+<span class="font-mono text-label-sm text-on-surface uppercase">INTERMEDIO</span>
+</label>
+<label class="bg-surface-container-lowest p-3 flex items-center gap-2 cursor-pointer hover:bg-surface-container border border-surface-container-highest has-[:checked]:border-primary-container has-[:checked]:bg-surface-container">
+<input class="text-primary-container focus:ring-0" name="experience" type="radio" value="Competidor"/>
+<span class="font-mono text-label-sm text-on-surface uppercase">COMPETIDOR</span>
+</label>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 px-3 bg-primary-container hover:bg-crimson-neon text-white font-label-sm sm:font-label-lg text-label-sm sm:text-label-lg tracking-widest uppercase flex items-center justify-center text-center gap-3 transition-colors shadow-lg active:scale-95 group" type="submit">
+<span>CONFIRMAR CLASE DE PRUEBA GRATUITA</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">bolt</span>
+</button>
+</div>
+<p class="font-mono text-[10px] text-center text-secondary tracking-wider uppercase pt-2">
+                AL ENVIAR, ACEPTAS NUESTRO CÓDIGO ÉTICO Y POLÍTICA DE RESGUARDO DE INTEGRIDAD FÍSICA.
+              </p>
+</form>
+<!-- Confirmation panel -->
+<div id="form-success" class="is-hidden text-center py-6">
+<span class="material-symbols-outlined text-primary-container text-[48px]">verified</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mt-3">SOLICITUD REGISTRADA</h3>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-md mx-auto">Reserva #<span id="res-id" class="text-primary-container font-mono"></span> confirmada. Se abrió WhatsApp con tu mensaje hacia <span class="text-on-surface font-mono">+58 414-7308002</span>; si no se abrió, pulsa el botón de abajo. Te contactamos en menos de 2 horas.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
+<a id="wa-link" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-label-md uppercase tracking-widest transition-colors" href="#" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[16px]">chat</span>ENVIAR POR WHATSAPP</a>
+<a id="mail-link" class="inline-flex items-center gap-2 px-6 py-3 border border-surface-container-highest hover:border-primary-container text-on-surface font-label-md uppercase tracking-widest transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">mail</span>ENVIAR POR EMAIL</a>
+<button id="form-reset" class="sm:col-span-2 font-mono text-label-sm text-secondary hover:text-primary-container uppercase tracking-widest transition-colors" type="button">ENVIAR OTRA SOLICITUD</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACTO & UBICACIÓN -->
+<section class="w-full bg-surface-container-lowest py-20 relative" id="contacto">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// CANALES DIRECTOS // CONTACT</span>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface">CONTACTO &amp; UBICACIÓN</h2>
+</div>
+<p class="font-mono text-label-sm text-secondary tracking-widest uppercase">RESPUESTA MEDIA: &lt; 2 HORAS</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-5 flex flex-col gap-4">
+<a class="group bg-surface-container border border-surface-container-highest p-5 flex items-start gap-4 hover:border-primary-container transition-colors" href="https://wa.me/584147308002?text=Hola%20Coliseo%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20clase%20de%20prueba" target="_blank" rel="noopener">
+<span class="w-10 h-10 shrink-0 bg-primary-container text-white flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">chat</span></span>
+<span class="flex flex-col">
+<span class="font-title text-title uppercase text-on-surface">WHATSAPP DIRECTO</span>
+<span class="font-body-sm text-body-sm text-secondary">+58 414-7308002 · Consultas y reservas</span>
+<span class="font-mono text-label-sm text-primary uppercase tracking-widest mt-1">ABRIR CONVERSACIÓN →</span>
+</span>
+</a>
+<a class="group bg-surface-container border border-surface-container-highest p-5 flex items-start gap-4 hover:border-primary-container transition-colors" href="tel:+584147308002">
+<span class="w-10 h-10 shrink-0 bg-surface-container-highest text-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">call</span></span>
+<span class="flex flex-col">
+<span class="font-title text-title uppercase text-on-surface">TELÉFONO DE DOJO</span>
+<span class="font-body-sm text-body-sm text-secondary">+58 414-7308002 · Lun-Vie 06:30–22:30</span>
+<span class="font-mono text-label-sm text-primary uppercase tracking-widest mt-1">LLAMAR AHORA →</span>
+</span>
+</a>
+<a class="group bg-surface-container border border-surface-container-highest p-5 flex items-start gap-4 hover:border-primary-container transition-colors" href="mailto:contacto@coliseomartialarts.com?subject=Consulta%20Coliseo">
+<span class="w-10 h-10 shrink-0 bg-surface-container-highest text-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">mail</span></span>
+<span class="flex flex-col">
+<span class="font-title text-title uppercase text-on-surface">CORREO INSTITUCIONAL</span>
+<span class="font-body-sm text-body-sm text-secondary">contacto@coliseomartialarts.com</span>
+<span class="font-mono text-label-sm text-primary uppercase tracking-widest mt-1">ESCRIBIR EMAIL →</span>
+</span>
+</a>
+<div class="bg-surface-container border border-surface-container-highest p-5">
+<span class="font-mono text-label-sm text-secondary tracking-widest uppercase block mb-3">DIRECCIÓN FÍSICA</span>
+<p class="font-body-md text-body-md text-on-surface">C.C. Murachi, Valera, Estado Trujillo, Venezuela</p>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="px-2 py-1 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">C.C. MURACHI, VALERA</span>
+<span class="px-2 py-1 bg-surface-container-highest font-mono text-label-sm text-secondary uppercase">ESTACIONAMIENTO DEL CENTRO</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 bg-surface-container border border-surface-container-highest overflow-hidden min-h-[360px]">
+<iframe class="w-full h-full min-h-[360px] border-0 grayscale contrast-125" style="filter:grayscale(1) invert(0.92) contrast(0.9);" loading="lazy" title="Mapa de ubicación de Coliseo en Valera" src="https://www.openstreetmap.org/export/embed.html?bbox=-70.6600%2C9.2900%2C-70.5700%2C9.3500&amp;layer=mapnik&amp;marker=9.3176%2C-70.6147"></iframe>
+</div>
+</div>
+<div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-container p-6 border-l-2 border-primary-container">
+<p class="font-body-md text-body-md text-secondary">¿Listo para pisar el tatami? La primera sesión es gratuita y sin compromiso.</p>
+<a class="inline-flex items-center gap-2 px-6 py-3 bg-primary-container hover:bg-crimson-neon text-white font-label-md uppercase tracking-widest transition-colors active:scale-95" href="#agenda-clase">RESERVAR CLASE DE PRUEBA<span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+</div>
+</section>
+</div></main>
+<!-- MASTER COLISEO FOOTER -->
+<footer class="w-full bg-[#060608] border-t border-red-950/40 text-neutral-400">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-20 pb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/5">
+<!-- Brand & Manifesto -->
+<div class="space-y-5">
+<a class="inline-block opacity-95 hover:opacity-100 transition-opacity" href="#inicio" aria-label="Coliseo - Inicio">
+<img class="h-48 w-auto object-contain" src="logo.png" alt="Coliseo Martial Arts Academy"/>
+</a>
+<p class="text-xs text-neutral-400 font-light leading-relaxed">
+          Centro de alto rendimiento dedicado a la disciplina y la excelencia marcial. Forjamos el carácter mediante el rigor técnico y el honor en el combate.
+        </p>
+<div class="flex items-center gap-3 pt-2">
+<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="https://wa.me/584147308002?text=Hola%20Coliseo" target="_blank" rel="noopener" aria-label="WhatsApp">
+<span class="material-symbols-outlined text-sm">sports_mma</span>
+</a>
+<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+</a>
+<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="mailto:contacto@coliseomartialarts.com" aria-label="Email">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<!-- Schedule -->
+<div class="space-y-4">
+<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// HORARIOS DE DOJO</h3>
+<ul class="space-y-2.5 text-xs text-neutral-400 font-light font-mono">
+<li><span class="text-white font-semibold">LUN - VIE:</span> 06:30 – 22:00</li>
+<li><span class="text-white font-semibold">SÁBADOS (OPEN MAT):</span> 08:30 – 15:00</li>
+<li><span class="text-white font-semibold">DOMINGOS:</span> 10:00 – 13:00 (FIGHT TEAM)</li>
+<li class="pt-2 text-primary-container text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+            GRUPOS PARA NIÑOS, JÓVENES Y ADULTOS
+          </li>
+</ul>
+</div>
+<!-- Location -->
+<div class="space-y-4">
+<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// UBICACIÓN &amp; CONTACTO</h3>
+<div class="space-y-3 text-xs text-neutral-400 font-light font-mono">
+<a class="flex items-start gap-2 hover:text-white transition-colors" href="https://www.openstreetmap.org/?mlat=9.3176&amp;mlon=-70.6147#map=15/9.3176/-70.6147" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-primary-container text-sm mt-0.5">location_on</span>
+<span>C.C. Murachi, Valera, Estado Trujillo, Venezuela</span>
+</a>
+<a class="flex items-center gap-2 hover:text-white transition-colors" href="tel:+584147308002">
+<span class="material-symbols-outlined text-primary-container text-sm">call</span>
+<span>+58 414-7308002</span>
+</a>
+<a class="flex items-center gap-2 hover:text-white transition-colors" href="mailto:contacto@coliseomartialarts.com">
+<span class="material-symbols-outlined text-primary-container text-sm">mail</span>
+<span>contacto@coliseomartialarts.com</span>
+</a>
+</div>
+</div>
+<!-- Newsletter -->
+<div class="space-y-4">
+<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// BOLETÍN DE DOJO</h3>
+<p class="text-xs text-neutral-400 font-light leading-relaxed">
+          Seminarios internacionales, veladas de combate y convocatorias de examen de grado.
+        </p>
+<form id="newsletter-form" class="flex border border-white/10 bg-[#0c0c10]" novalidate>
+<input class="w-full bg-transparent px-3 py-2.5 text-xs text-white placeholder:text-neutral-600 focus:outline-none font-mono" id="nl-email" placeholder="Tu correo electrónico" type="email" required="" aria-label="Tu correo electrónico"/>
+<button class="bg-primary-container hover:bg-red-600 px-4 text-white transition-colors flex items-center justify-center clip-angle" type="submit" aria-label="Suscribirme al boletín">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</form>
+<p id="newsletter-msg" class="is-hidden font-mono text-[10px] uppercase tracking-widest pt-2 text-emerald-400">SUSCRIPCIÓN CONFIRMADA. BIENVENIDO AL BOLETÍN.</p>
+<p id="newsletter-err" class="is-hidden font-mono text-[10px] uppercase tracking-widest pt-2 text-primary-container">INTRODUCE UN CORREO VÁLIDO.</p>
+</div>
+</div>
+<!-- Official Federations Strip -->
+<div class="py-8 border-b border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+<span class="text-[11px] font-mono uppercase tracking-widest text-neutral-500 font-bold">DISCIPLINAS IMPARTIDAS</span>
+<div class="flex flex-wrap items-center gap-6 text-[11px] font-mono uppercase tracking-widest text-neutral-400">
+<span class="hover:text-white transition-colors">BOXEO</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">KICKBOXING</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">JIU-JITSU BRASILEÑO</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">MMA</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">DEFENSA PERSONAL</span>
+</div>
+</div>
+<!-- Copyright & Legal Links -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-widest text-neutral-500">
+<p>© <span id="year">2025</span> COLISEO MARTIAL ARTS ACADEMY. TODOS LOS DERECHOS RESERVADOS.</p>
+<div class="flex items-center gap-6">
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="terminos">Términos del Dojo</button>
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="privacidad">Política de Privacidad</button>
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="honor">Código de Honor</button>
+</div>
+</div>
+</div>
+</footer>
+<!-- LEGAL MODAL -->
+<div id="legal-modal" class="is-hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+<div class="w-full max-w-2xl bg-[#121215] border border-primary-container shadow-[0_0_40px_-8px_rgba(220,38,38,0.45)] max-h-[85vh] overflow-y-auto">
+<div class="flex items-center justify-between px-6 py-4 border-b border-surface-container-highest sticky top-0 bg-[#121215]">
+<h3 id="legal-title" class="font-title text-title uppercase text-on-surface"></h3>
+<button id="legal-close" class="w-9 h-9 flex items-center justify-center border border-white/10 text-neutral-400 hover:text-primary-container hover:border-primary-container transition-colors" type="button" aria-label="Cerrar"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div id="legal-body" class="px-6 py-6 space-y-4 font-body-md text-body-md text-secondary leading-relaxed"></div>
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Mobile navigation ---------- */
+  var toggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  if (toggle && mobileNav) {
+    toggle.addEventListener("click", function () {
+      var open = !mobileNav.classList.contains("is-hidden");
+      mobileNav.classList.toggle("is-hidden", open);
+      toggle.setAttribute("aria-expanded", String(!open));
+      toggle.querySelector(".material-symbols-outlined").textContent = open ? "menu" : "close";
+    });
+    mobileNav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        mobileNav.classList.add("is-hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.querySelector(".material-symbols-outlined").textContent = "menu";
+      });
+    });
+  }
+
+  /* ---------- Scrollspy ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+  var spySections = ["inicio", "disciplinas", "horarios", "entrenadores", "contacto"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  function updateSpy() {
+    var pos = window.scrollY + 140;
+    var current = spySections[0];
+    spySections.forEach(function (sec) { if (sec.offsetTop <= pos) current = sec; });
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 4) {
+      current = spySections[spySections.length - 1];
+    }
+    navLinks.forEach(function (link) {
+      link.classList.toggle("is-active", link.dataset.target === current.id);
+    });
+  }
+  window.addEventListener("scroll", updateSpy, { passive: true });
+  window.addEventListener("resize", updateSpy);
+  updateSpy();
+
+  /* ---------- Membership plan selection ---------- */
+  var planField = document.getElementById("plan-field");
+  var planChip = document.getElementById("plan-chip");
+  var planChipName = document.getElementById("plan-chip-name");
+  var planNames = { esencial: "ESENCIAL · 59€/mes", competicion: "COMPETICIÓN · 89€/mes", elite: "ÉLITE / PRO · 129€/mes" };
+
+  document.querySelectorAll(".plan-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var plan = btn.dataset.plan;
+      if (planField) planField.value = plan;
+      if (planChip && planChipName) {
+        planChipName.textContent = planNames[plan] || plan;
+        planChip.classList.remove("is-hidden");
+        planChip.classList.add("flex");
+      }
+      document.querySelectorAll(".plan-btn").forEach(function (b) {
+        b.classList.remove("ring-2", "ring-primary-container");
+      });
+      btn.classList.add("ring-2", "ring-primary-container");
+      var target = document.getElementById("agenda-clase");
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+  var planClear = document.getElementById("plan-clear");
+  if (planClear) {
+    planClear.addEventListener("click", function () {
+      if (planField) planField.value = "";
+      planChip.classList.add("is-hidden");
+      planChip.classList.remove("flex");
+      document.querySelectorAll(".plan-btn").forEach(function (b) {
+        b.classList.remove("ring-2", "ring-primary-container");
+      });
+    });
+  }
+
+  /* ---------- Trial form ---------- */
+  var form = document.getElementById("trial-form");
+  var success = document.getElementById("form-success");
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+
+  function setError(input, hasError) {
+    var wrap = input.closest("div");
+    var msg = wrap ? wrap.querySelector(".err") : null;
+    input.classList.toggle("field-error", hasError);
+    if (msg) msg.classList.toggle("is-hidden", !hasError);
+  }
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("f-name");
+      var phone = document.getElementById("f-phone");
+      var email = document.getElementById("f-email");
+      var disc = document.getElementById("f-discipline");
+
+      var digits = phone.value.replace(/[^\d]/g, "");
+      var checks = [
+        [name, name.value.trim().length >= 3],
+        [email, EMAIL_RE.test(email.value.trim())],
+        [phone, digits.length >= 7 && digits.length <= 15],
+        [disc, disc.value !== ""]
+      ];
+      var firstBad = null;
+      checks.forEach(function (c) {
+        setError(c[0], !c[1]);
+        if (!c[1] && !firstBad) firstBad = c[0];
+      });
+      if (firstBad) { firstBad.focus(); return; }
+
+      var experience = (form.querySelector("input[name=experience]:checked") || {}).value || "Principiante";
+      var ref = "COL-" + String(Date.now()).slice(-6);
+      var data = {
+        ref: ref,
+        name: name.value.trim(),
+        phone: phone.value.trim(),
+        email: email.value.trim(),
+        discipline: disc.value,
+        experience: experience,
+        plan: planField ? planField.value : "",
+        date: new Date().toISOString()
+      };
+
+      try {
+        var store = JSON.parse(localStorage.getItem("coliseo_reservas") || "[]");
+        store.push(data);
+        localStorage.setItem("coliseo_reservas", JSON.stringify(store));
+      } catch (err) { /* storage unavailable */ }
+
+      var body = [
+        "SOLICITUD DE CLASE DE PRUEBA #" + ref,
+        "Nombre: " + data.name,
+        "Teléfono: " + data.phone,
+        "Email: " + data.email,
+        "Disciplina: " + data.discipline,
+        "Nivel: " + data.experience,
+        data.plan ? "Plan de interés: " + (planNames[data.plan] || data.plan) : ""
+      ].filter(Boolean).join("\n");
+
+      document.getElementById("res-id").textContent = ref;
+      var waUrl =
+        "https://wa.me/584147308002?text=" + encodeURIComponent(body);
+      document.getElementById("wa-link").href = waUrl;
+      document.getElementById("mail-link").href =
+        "mailto:contacto@coliseomartialarts.com?subject=" +
+        encodeURIComponent("Clase de prueba " + ref + " - " + data.name) +
+        "&body=" + encodeURIComponent(body);
+
+      form.classList.add("is-hidden");
+      success.classList.remove("is-hidden");
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      var opened = null;
+      try { opened = window.open(waUrl, "_blank"); } catch (err) { opened = null; }
+      if (!opened) { window.location.href = waUrl; }
+    });
+
+    form.querySelectorAll("input, select").forEach(function (el) {
+      el.addEventListener("input", function () { setError(el, false); });
+      el.addEventListener("change", function () { setError(el, false); });
+    });
+  }
+
+  var resetBtn = document.getElementById("form-reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      form.reset();
+      form.classList.remove("is-hidden");
+      success.classList.add("is-hidden");
+      if (planField) planField.value = "";
+      if (planChip) { planChip.classList.add("is-hidden"); planChip.classList.remove("flex"); }
+      document.querySelectorAll(".plan-btn").forEach(function (b) {
+        b.classList.remove("ring-2", "ring-primary-container");
+      });
+      window.scrollTo({ top: document.getElementById("agenda-clase").offsetTop - 100, behavior: "smooth" });
+    });
+  }
+
+  /* ---------- Newsletter ---------- */
+  var nl = document.getElementById("newsletter-form");
+  if (nl) {
+    nl.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = document.getElementById("nl-email");
+      var ok = EMAIL_RE.test(input.value.trim());
+      document.getElementById("newsletter-msg").classList.toggle("is-hidden", !ok);
+      document.getElementById("newsletter-err").classList.toggle("is-hidden", ok);
+      if (ok) {
+        try {
+          var list = JSON.parse(localStorage.getItem("coliseo_newsletter") || "[]");
+          if (list.indexOf(input.value.trim().toLowerCase()) === -1) list.push(input.value.trim().toLowerCase());
+          localStorage.setItem("coliseo_newsletter", JSON.stringify(list));
+        } catch (err) {}
+        input.value = "";
+      } else {
+        input.focus();
+      }
+    });
+  }
+
+  /* ---------- Counters ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || "";
+    var suffixClass = el.dataset.suffixClass || "";
+    var pad = el.dataset.pad ? parseInt(el.dataset.pad, 10) : 0;
+    var start = performance.now();
+    var dur = 1400;
+    function frame(now) {
+      var p = Math.min((now - start) / dur, 1);
+      var val = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      var out = String(val);
+      if (pad && out.length < pad) out = new Array(pad - out.length + 1).join("0") + out;
+      el.innerHTML = out + (suffix ? '<span class="' + suffixClass + '">' + suffix + "</span>" : "");
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if ("IntersectionObserver" in window && counters.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { io.observe(c); });
+  }
+
+  /* ---------- Videos: play solo cuando estan visibles ---------- */
+  if ("IntersectionObserver" in window) {
+    var vids = document.querySelectorAll("video[autoplay]");
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          var pr = en.target.play();
+          if (pr && pr.catch) pr.catch(function () {});
+        } else {
+          en.target.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(function (v) { vio.observe(v); });
+  }
+  /* ---------- Legal modal ---------- */
+  var LEGAL = {
+    terminos: {
+      title: "Términos del Dojo",
+      body: "<p>El acceso a las instalaciones de Coliseo Martial Arts Academy implica la aceptación de estas condiciones:</p>" +
+        "<p><strong class='text-on-surface'>1. Acceso.</strong> La membresía es personal e intransferible. El carné de socio debe presentarse en cada sesión. Los horarios y grupos se coordinan directamente con la academia.</p>" +
+        "<p><strong class='text-on-surface'>2. Pagos.</strong> Las cuotas se domicilian el día 1 de cada mes. La baja se solicita con 30 días de antelación y no implica penalización.</p>" +
+        "<p><strong class='text-on-surface'>3. Material.</strong> Kimono, guantes y protecciones pueden prestarse gratuitamente en la primera sesión; a partir de entonces, el equipo básico es responsibilidad del alumno.</p>" +
+        "<p><strong class='text-on-surface'>4. Responsabilidad.</strong> Toda actividad física conlleva riesgo. El alumno declara estar en condiciones de salud para entrenar y exime al centro de lesiones derivadas del incumplimiento de las indicaciones del cuerpo técnico.</p>"
+    },
+    privacidad: {
+      title: "Política de Privacidad",
+      body: "<p>Responsable: Coliseo Martial Arts Academy · Valera, Estado Trujillo, Venezuela.</p>" +
+        "<p><strong class='text-on-surface'>Datos recabados.</strong> Nombre, teléfono, correo y preferencias de entrenamiento, facilitados voluntariamente a través del formulario de clase de prueba o del boletín.</p>" +
+        "<p><strong class='text-on-surface'>Finalidad.</strong> Gestionar la solicitud de clase, contactar para confirmar la reserva y, si lo autorizas, enviarte el boletín de seminarios y veladas.</p>" +
+        "<p><strong class='text-on-surface'>Conservación.</strong> Los datos se guardan mientras exista relación con el alumno y pueden suprimirse en cualquier momento escribiendo a contacto@coliseomartialarts.com.</p>" +
+        "<p><strong class='text-on-surface'>Derechos.</strong> Puedes ejercer acceso, rectificación, oposición y portabilidad enviando un correo con el asunto «LOPD».</p>"
+    },
+    honor: {
+      title: "Código de Honor",
+      body: "<p><strong class='text-on-surface'>Artículo I · Saludo de tatami.</strong> Se saluda al entrar y salir del tatami, y al compañero con el que se entrena.</p>" +
+        "<p><strong class='text-on-surface'>Artículo II · Constancia absoluta.</strong> La disciplina está por encima de la motivación. Se repite el fundamento hasta la maestría.</p>" +
+        "<p><strong class='text-on-surface'>Artículo III · Lealtad al equipo.</strong> Nadie asciende solo. Se cuida al compañero por encima del resultado.</p>" +
+        "<p><strong class='text-on-surface'>Artículo IV · Perfección mecánica.</strong> Se rechaza la fuerza bruta desordenada: cada palanca responde a un principio anatómico exacto.</p>" +
+        "<p><strong class='text-on-surface'>Artículo V · Cero ego.</strong> La violencia fuera del tatami no tiene cabida en este centro.</p>"
+    }
+  };
+  var modal = document.getElementById("legal-modal");
+  document.querySelectorAll("[data-legal]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var doc = LEGAL[btn.dataset.legal];
+      if (!doc || !modal) return;
+      document.getElementById("legal-title").textContent = doc.title;
+      document.getElementById("legal-body").innerHTML = doc.body;
+      modal.classList.remove("is-hidden");
+      document.body.style.overflow = "hidden";
+      document.getElementById("legal-close").focus();
+    });
+  });
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add("is-hidden");
+    document.body.style.overflow = "";
+  }
+  var closeBtn = document.getElementById("legal-close");
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+
+  /* ---------- Misc ---------- */
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
+</body></html>
