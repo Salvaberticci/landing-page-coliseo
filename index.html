@@ -870,12 +870,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">Introduce un teléfono válido (7-15 dígitos)</p>
 </div>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div>
-<label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-email">CORREO ELECTRÓNICO *</label>
-<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest placeholder:text-secondary/50 focus:outline-none focus:border-primary-container" id="f-email" name="email" placeholder="nombre@correo.com" required="" type="email" autocomplete="email"/>
-<p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">El correo no tiene un formato válido</p>
-</div>
 <div>
 <label class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5" for="f-discipline">DISCIPLINA DE INTERÉS *</label>
 <select class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 font-body-md text-[16px] sm:text-body-md border border-surface-container-highest focus:outline-none focus:border-primary-container" id="f-discipline" name="discipline" required="">
@@ -888,7 +882,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <option value="Asesoramiento personalizado">Asesoramiento personalizado</option>
 </select>
 <p class="err font-mono text-[10px] text-primary uppercase tracking-wider mt-1 is-hidden">Selecciona una disciplina</p>
-</div>
 </div>
 <div>
 <span class="block font-mono text-label-sm text-secondary tracking-widest uppercase mb-1.5">NIVEL DE EXPERIENCIA ACTUAL</span>
@@ -983,7 +976,7 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <!-- MASTER COLISEO FOOTER -->
 <footer class="w-full bg-[#060608] border-t border-red-950/40 text-neutral-400">
 <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-20 pb-12">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pb-16 border-b border-white/5">
 <!-- Brand & Manifesto -->
 <div class="space-y-5">
 <a class="inline-block opacity-95 hover:opacity-100 transition-opacity" href="#inicio" aria-label="Coliseo - Inicio">
@@ -1027,21 +1020,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <span>+58 414-7308002</span>
 </a>
 </div>
-</div>
-<!-- Newsletter -->
-<div class="space-y-4">
-<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// BOLETÍN DE DOJO</h3>
-<p class="text-xs text-neutral-400 font-light leading-relaxed">
-          Seminarios internacionales, veladas de combate y convocatorias de examen de grado.
-        </p>
-<form id="newsletter-form" class="flex border border-white/10 bg-[#0c0c10]" novalidate>
-<input class="w-full bg-transparent px-3 py-2.5 text-xs text-white placeholder:text-neutral-600 focus:outline-none font-mono" id="nl-email" placeholder="Tu correo electrónico" type="email" required="" aria-label="Tu correo electrónico"/>
-<button class="bg-primary-container hover:bg-red-600 px-4 text-white transition-colors flex items-center justify-center clip-angle" type="submit" aria-label="Suscribirme al boletín">
-<span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</form>
-<p id="newsletter-msg" class="is-hidden font-mono text-[10px] uppercase tracking-widest pt-2 text-emerald-400">SUSCRIPCIÓN CONFIRMADA. BIENVENIDO AL BOLETÍN.</p>
-<p id="newsletter-err" class="is-hidden font-mono text-[10px] uppercase tracking-widest pt-2 text-primary-container">INTRODUCE UN CORREO VÁLIDO.</p>
 </div>
 </div>
 <!-- Official Federations Strip -->
@@ -1162,7 +1140,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
   /* ---------- Trial form ---------- */
   var form = document.getElementById("trial-form");
   var success = document.getElementById("form-success");
-  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 
   function setError(input, hasError) {
     var wrap = input.closest("div");
@@ -1176,13 +1153,11 @@ marciales <span class="text-primary-container underline decoration-primary-conta
       e.preventDefault();
       var name = document.getElementById("f-name");
       var phone = document.getElementById("f-phone");
-      var email = document.getElementById("f-email");
       var disc = document.getElementById("f-discipline");
 
       var digits = phone.value.replace(/[^\d]/g, "");
       var checks = [
         [name, name.value.trim().length >= 3],
-        [email, EMAIL_RE.test(email.value.trim())],
         [phone, digits.length >= 7 && digits.length <= 15],
         [disc, disc.value !== ""]
       ];
@@ -1199,7 +1174,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
         ref: ref,
         name: name.value.trim(),
         phone: phone.value.trim(),
-        email: email.value.trim(),
         discipline: disc.value,
         experience: experience,
         plan: planField ? planField.value : "",
@@ -1216,7 +1190,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
         "SOLICITUD DE CLASE DE PRUEBA #" + ref,
         "Nombre: " + data.name,
         "Teléfono: " + data.phone,
-        "Email: " + data.email,
         "Disciplina: " + data.discipline,
         "Nivel: " + data.experience,
         data.plan ? "Plan de interés: " + (planNames[data.plan] || data.plan) : ""
@@ -1254,28 +1227,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
         b.classList.remove("ring-2", "ring-primary-container");
       });
       window.scrollTo({ top: document.getElementById("agenda-clase").offsetTop - 100, behavior: "smooth" });
-    });
-  }
-
-  /* ---------- Newsletter ---------- */
-  var nl = document.getElementById("newsletter-form");
-  if (nl) {
-    nl.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var input = document.getElementById("nl-email");
-      var ok = EMAIL_RE.test(input.value.trim());
-      document.getElementById("newsletter-msg").classList.toggle("is-hidden", !ok);
-      document.getElementById("newsletter-err").classList.toggle("is-hidden", ok);
-      if (ok) {
-        try {
-          var list = JSON.parse(localStorage.getItem("coliseo_newsletter") || "[]");
-          if (list.indexOf(input.value.trim().toLowerCase()) === -1) list.push(input.value.trim().toLowerCase());
-          localStorage.setItem("coliseo_newsletter", JSON.stringify(list));
-        } catch (err) {}
-        input.value = "";
-      } else {
-        input.focus();
-      }
     });
   }
 
@@ -1335,8 +1286,8 @@ marciales <span class="text-primary-container underline decoration-primary-conta
     privacidad: {
       title: "Política de Privacidad",
       body: "<p>Responsable: Coliseo Martial Arts Academy · Valera, Estado Trujillo, Venezuela.</p>" +
-        "<p><strong class='text-on-surface'>Datos recabados.</strong> Nombre, teléfono, correo y preferencias de entrenamiento, facilitados voluntariamente a través del formulario de clase de prueba o del boletín.</p>" +
-        "<p><strong class='text-on-surface'>Finalidad.</strong> Gestionar la solicitud de clase, contactar para confirmar la reserva y, si lo autorizas, enviarte el boletín de seminarios y veladas.</p>" +
+        "<p><strong class='text-on-surface'>Datos recabados.</strong> Nombre, teléfono y preferencias de entrenamiento, facilitados voluntariamente a través del formulario de clase de prueba.</p>" +
+        "<p><strong class='text-on-surface'>Finalidad.</strong> Gestionar la solicitud de clase y contactar para confirmar la reserva.</p>" +
         "<p><strong class='text-on-surface'>Conservación.</strong> Los datos se guardan mientras exista relación con el alumno y pueden suprimirse en cualquier momento solicitándolo por WhatsApp al +58 414-7308002.</p>" +
         "<p><strong class='text-on-surface'>Derechos.</strong> Puedes ejercer acceso, rectificación, oposición y portabilidad escribiéndonos por WhatsApp con el asunto «LOPD».</p>"
     },
