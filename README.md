@@ -18,7 +18,7 @@ Deportes de combate moderno que combinan técnicas de diversas disciplinas — *
 | **Horarios** | Parrilla semanal con grupos por edad y nivel |
 | **Entrenadores & Dojo** | Ficha del **Sensei Marcos Castellanos** y su palmarés |
 | **Clase de prueba** | Formulario validado que envía la solicitud a WhatsApp |
-| **Contacto & Ubicación** | WhatsApp, teléfono, correo, dirección y mapa (OpenStreetMap) |
+| **Contacto & Ubicación** | WhatsApp, teléfono, dirección y mapa (OpenStreetMap) |
 
 ## Sensei
 
@@ -80,6 +80,5 @@ vercel --prod
 ## Contacto
 
 - **WhatsApp / Teléfono:** +58 414-7308002
-- **Correo:** contacto@coliseomartialarts.com
 - **Dirección:** C.C. Murachi, Valera, Estado Trujillo, Venezuela
 - **Horario:** Lun–Vie 06:30–22:00 · Sáb 08:30–15:00 · Dom 10:00–13:00 (VET, UTC-4)

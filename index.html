@@ -924,7 +924,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <p class="font-body-md text-body-md text-secondary mt-2 max-w-md mx-auto">Reserva #<span id="res-id" class="text-primary-container font-mono"></span> confirmada. Se abrió WhatsApp con tu mensaje hacia <span class="text-on-surface font-mono">+58 414-7308002</span>; si no se abrió, pulsa el botón de abajo. Te contactamos en menos de 2 horas.</p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
 <a id="wa-link" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-label-md uppercase tracking-widest transition-colors" href="#" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[16px]">chat</span>ENVIAR POR WHATSAPP</a>
-<a id="mail-link" class="inline-flex items-center gap-2 px-6 py-3 border border-surface-container-highest hover:border-primary-container text-on-surface font-label-md uppercase tracking-widest transition-colors" href="#"><span class="material-symbols-outlined text-[16px]">mail</span>ENVIAR POR EMAIL</a>
 <button id="form-reset" class="sm:col-span-2 font-mono text-label-sm text-secondary hover:text-primary-container uppercase tracking-widest transition-colors" type="button">ENVIAR OTRA SOLICITUD</button>
 </div>
 </div>
@@ -959,14 +958,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <span class="font-title text-title uppercase text-on-surface">TELÉFONO DE DOJO</span>
 <span class="font-body-sm text-body-sm text-secondary">+58 414-7308002 · Lun-Vie 06:30–22:30</span>
 <span class="font-mono text-label-sm text-primary uppercase tracking-widest mt-1">LLAMAR AHORA →</span>
-</span>
-</a>
-<a class="group bg-surface-container border border-surface-container-highest p-5 flex items-start gap-4 hover:border-primary-container transition-colors" href="mailto:contacto@coliseomartialarts.com?subject=Consulta%20Coliseo">
-<span class="w-10 h-10 shrink-0 bg-surface-container-highest text-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">mail</span></span>
-<span class="flex flex-col">
-<span class="font-title text-title uppercase text-on-surface">CORREO INSTITUCIONAL</span>
-<span class="font-body-sm text-body-sm text-secondary">contacto@coliseomartialarts.com</span>
-<span class="font-mono text-label-sm text-primary uppercase tracking-widest mt-1">ESCRIBIR EMAIL →</span>
 </span>
 </a>
 <div class="bg-surface-container border border-surface-container-highest p-5">
@@ -1008,9 +999,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
 <span class="material-symbols-outlined text-sm">play_circle</span>
 </a>
-<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="mailto:contacto@coliseomartialarts.com" aria-label="Email">
-<span class="material-symbols-outlined text-sm">chat</span>
-</a>
 </div>
 </div>
 <!-- Schedule -->
@@ -1037,10 +1025,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
 <a class="flex items-center gap-2 hover:text-white transition-colors" href="tel:+584147308002">
 <span class="material-symbols-outlined text-primary-container text-sm">call</span>
 <span>+58 414-7308002</span>
-</a>
-<a class="flex items-center gap-2 hover:text-white transition-colors" href="mailto:contacto@coliseomartialarts.com">
-<span class="material-symbols-outlined text-primary-container text-sm">mail</span>
-<span>contacto@coliseomartialarts.com</span>
 </a>
 </div>
 </div>
@@ -1242,10 +1226,6 @@ marciales <span class="text-primary-container underline decoration-primary-conta
       var waUrl =
         "https://wa.me/584147308002?text=" + encodeURIComponent(body);
       document.getElementById("wa-link").href = waUrl;
-      document.getElementById("mail-link").href =
-        "mailto:contacto@coliseomartialarts.com?subject=" +
-        encodeURIComponent("Clase de prueba " + ref + " - " + data.name) +
-        "&body=" + encodeURIComponent(body);
 
       form.classList.add("is-hidden");
       success.classList.remove("is-hidden");
@@ -1357,8 +1337,8 @@ marciales <span class="text-primary-container underline decoration-primary-conta
       body: "<p>Responsable: Coliseo Martial Arts Academy · Valera, Estado Trujillo, Venezuela.</p>" +
         "<p><strong class='text-on-surface'>Datos recabados.</strong> Nombre, teléfono, correo y preferencias de entrenamiento, facilitados voluntariamente a través del formulario de clase de prueba o del boletín.</p>" +
         "<p><strong class='text-on-surface'>Finalidad.</strong> Gestionar la solicitud de clase, contactar para confirmar la reserva y, si lo autorizas, enviarte el boletín de seminarios y veladas.</p>" +
-        "<p><strong class='text-on-surface'>Conservación.</strong> Los datos se guardan mientras exista relación con el alumno y pueden suprimirse en cualquier momento escribiendo a contacto@coliseomartialarts.com.</p>" +
-        "<p><strong class='text-on-surface'>Derechos.</strong> Puedes ejercer acceso, rectificación, oposición y portabilidad enviando un correo con el asunto «LOPD».</p>"
+        "<p><strong class='text-on-surface'>Conservación.</strong> Los datos se guardan mientras exista relación con el alumno y pueden suprimirse en cualquier momento solicitándolo por WhatsApp al +58 414-7308002.</p>" +
+        "<p><strong class='text-on-surface'>Derechos.</strong> Puedes ejercer acceso, rectificación, oposición y portabilidad escribiéndonos por WhatsApp con el asunto «LOPD».</p>"
     },
     honor: {
       title: "Código de Honor",
