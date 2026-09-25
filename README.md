@@ -1,6 +1,6 @@
-# EL COLISEO — Academia de Artes Marciales Mixtas
+﻿# EL COLISEO — Academia de Artes Marciales Mixtas
 
-Landing page oficial de **El Coliseo**, academia de artes marciales mixtas ubicada en el **C.C. Murachi, Valera, Estado Trujillo (Venezuela)**.
+Landing page oficial de **El Coliseo**, academia de artes marciales mixtas ubicada en el **C.C. Murachi, final del pasillo central, locales 11 y 12, Sector Las Acacias, Valera (Venezuela)**.
 
 Deportes de combate moderno que combinan técnicas de diversas disciplinas — **Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal** — para **niños, jóvenes y adultos** en diferentes horarios.
 
@@ -81,5 +81,5 @@ vercel --prod
 ## Contacto
 
 - **WhatsApp / Teléfono:** +58 414-7308002
-- **Dirección:** C.C. Murachi, Valera, Estado Trujillo, Venezuela
+- **Dirección:** C.C. Murachi, final del pasillo central, locales 11 y 12, Sector Las Acacias, Valera
 - **Horario:** Lun–Vie 06:30–22:00 · Sáb 08:30–15:00 · Dom 10:00–13:00 (VET, UTC-4)
