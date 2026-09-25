@@ -24,11 +24,12 @@ Deportes de combate moderno que combinan técnicas de diversas disciplinas — *
 
 **Marcos Castellanos** — Director técnico:
 
-- Campeón Nacional en Kickboxing
-- SubCampeón de los Juegos Panamericanos Brasil 2022
-- Medallista Internacional en Jiu-Jitsu Brasileño
-- Cinturón Amarillo en la disciplina Capoeira
-- Preparador físico certificado
+- Atleta de alto rendimiento
+- Campeón Nacional en Kickboxing 2021
+- Subcampeón Panamericano en Kickboxing (Brasil, 2022)
+- Medallista Internacional y Cinturón Morado en Jiu-Jitsu Brasileño, con más de 10 medallas de oro obtenidas en Río de Janeiro (Brasil, 2023)
+- Cinturón Amarillo en la disciplina Capoeira (Brasil)
+- Instructor de entrenamiento físico
 
 ## Características
 
