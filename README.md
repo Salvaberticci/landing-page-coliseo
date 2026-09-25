@@ -38,7 +38,7 @@ Deportes de combate moderno que combinan técnicas de diversas disciplinas — *
 - Las solicitudes también se guardan en `localStorage` (`coliseo_reservas`) como respaldo local.
 - Vídeos de las disciplinas en loop, pausados automáticamente cuando están fuera de pantalla (`IntersectionObserver`).
 - Navegación con menú móvil, scrollspy, contadores animados, ticker horizontal y modal legal (términos y privacidad).
-- SEO básico: `title`, `meta description` y favicon con el logo.
+- **SEO**: `title` y `meta description` optimizados para "academia de artes marciales en Valera" + boxeo/kickboxing/jiu-jitsu/MMA, `canonical`, `robots`, Open Graph y Twitter Cards con `og-image` (1200×630), datos estructurados JSON-LD (`SportsActivityLocation` + `FAQPage`), sección de preguntas frecuentes, `robots.txt` y `sitemap.xml`.
 - Sin dependencias de build: Tailwind se carga por CDN con la configuración del proyecto *inline*.
 
 ## Estructura
@@ -47,8 +47,13 @@ Deportes de combate moderno que combinan técnicas de diversas disciplinas — *
 coliseo/
 ├── index.html      # página lista para publicar
 ├── code.html       # copia de trabajo (mismo contenido que index.html)
+├── robots.txt      # reglas para buscadores + sitemap
+├── sitemap.xml     # sitemap del sitio
+├── og-image.jpg    # imagen social 1200×630
+├── posters/        # pósteres de los vídeos (LCP)
 ├── logo.png        # logo y favicon
-├── marcos.png      # foto del Sensei
+├── marcos.png      # foto del Sensei (original)
+├── marcos.webp     # foto del Sensei optimizada (WebP)
 ├── academy.mp4     # vídeo de clases (hero)
 ├── jiujitsu.mp4    # vídeo de la disciplina
 ├── kickboxing.mp4
