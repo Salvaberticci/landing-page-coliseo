@@ -1,24 +1,23 @@
 ﻿# EL COLISEO — Academia de Artes Marciales Mixtas
 
-Landing page oficial de **El Coliseo**, academia de artes marciales mixtas ubicada en el **C.C. Murachi, final del pasillo central, locales 11 y 12, Sector Las Acacias, Valera (Venezuela)**.
+Web oficial de **El Coliseo**, academia de artes marciales mixtas ubicada en el **C.C. Murachi, final del pasillo central, locales 11 y 12, Sector Las Acacias, Valera (Venezuela)**.
 
 Deportes de combate moderno que combinan técnicas de diversas disciplinas — **Boxeo, Kickboxing, Jiu-Jitsu Brasileño, MMA y defensa personal** — para **niños, jóvenes y adultos** en diferentes horarios.
 
-> Sitio estático (HTML + CSS + JavaScript), sin backend: se puede abrir directamente en el navegador o desplegar en cualquier hosting.
+> Sitio estático multipágina (HTML + CSS + JavaScript), sin backend: se despliega en cualquier hosting estático (Vercel).
 
-## Contenido
+## Páginas
 
-| Sección | Descripción |
-|---|---|
-| **Hero** | Vídeo de las clases, propuesta de valor y acceso rápido a reservar |
-| **El Coliseo en cifras** | Disciplinas, grupos de edad, palmarés del Sensei y credenciales |
-| **Disciplinas de combate** | 4 tarjetas con vídeo propio: Jiu-Jitsu, Kickboxing, Boxeo y MMA |
-| **El código del guerrero** | Manifiesto: *Familia, Honor, Fuerza y Disciplina* |
-| **Testimonios** | Reseñas de practicantes y competidores |
-| **Horarios** | Parrilla semanal con grupos por edad y nivel |
-| **Entrenadores & Dojo** | Ficha del **Sensei Marcos Castellanos** y su palmarés |
-| **Clase de prueba** | Formulario validado que envía la solicitud a WhatsApp |
-| **Contacto & Ubicación** | WhatsApp, teléfono, dirección y mapa (OpenStreetMap) |
+| Página | Archivo | Contenido |
+|---|---|---|
+| **Inicio** | `index.html` | Hero con vídeo, cifras, resumen de disciplinas, testimonios, FAQ y CTA |
+| **Disciplinas** | `disciplinas.html` | Las 5 disciplinas en detalle: vídeo, descripción y métricas |
+| **Horarios** | `horarios.html` | Parrilla semanal con grupos por edad y cupos limitados |
+| **Entrenadores** | `entrenadores.html` | El código del guerrero + ficha del **Sensei Marcos Castellanos** y su palmarés |
+| **Noticias** | `noticias.html` | Torneos ganados, alumnos destacados y novedades (desde `noticias/noticias.json`) |
+| **Contacto** | `contacto.html` | Formulario de clase de prueba, WhatsApp, teléfono, dirección y mapa |
+
+Cada noticia además tiene su propia página estática en `noticias/<slug>.html` con `NewsArticle`, breadcrumb y miniaturas.
 
 ## Sensei
 
@@ -31,47 +30,65 @@ Deportes de combate moderno que combinan técnicas de diversas disciplinas — *
 - Cinturón Amarillo en la disciplina Capoeira (Brasil)
 - Instructor de entrenamiento físico
 
+## Cómo publicar una noticia
+
+1. Coloca la foto en `noticias/img/` (recomendado: JPG ~1200 px de ancho).
+2. Edita `noticias/noticias.json` y añade una entrada dentro de `"noticias"` copiando la `_plantilla` (claves: `slug`, `titulo`, `fecha` `AAAA-MM-DD`, `etiqueta` — `Torneo` | `Alumno destacado` | `Academia` —, `resumen`, `contenido` (párrafos), `imagen`, `destacada`).
+3. Genera la página de la noticia y el sitemap:
+
+```bash
+node tools/generar-noticias.mjs
+```
+
+4. Commit + push (Vercel despliega automáticamente).
+
+> El listado de `noticias.html` lee el JSON en tiempo real; el script solo hace las páginas de detalle y el `sitemap.xml`. Si borras una entrada del JSON, vuelve a ejecutar el script para limpiar su página.
+
 ## Características
 
-- **Responsive** (móvil, tableta y escritorio), probado a 375 px sin scroll horizontal.
-- Formulario con validación en línea, confirmación con referencia (`COL-xxxx`) y **envío automático a WhatsApp** (`+58 414-7308002`) con todos los datos de la solicitud.
-- Las solicitudes también se guardan en `localStorage` (`coliseo_reservas`) como respaldo local.
-- Vídeos de las disciplinas en loop, pausados automáticamente cuando están fuera de pantalla (`IntersectionObserver`).
-- Navegación con menú móvil, scrollspy, contadores animados, ticker horizontal y modal legal (términos y privacidad).
-- **SEO**: `title` y `meta description` optimizados para "academia de artes marciales en Valera" + boxeo/kickboxing/jiu-jitsu/MMA, `canonical`, `robots`, Open Graph y Twitter Cards con `og-image` (1200×630), datos estructurados JSON-LD (`SportsActivityLocation` + `FAQPage`), sección de preguntas frecuentes, `robots.txt` y `sitemap.xml`.
-- Sin dependencias de build: Tailwind se carga por CDN con la configuración del proyecto *inline*.
+- **Responsive** (móvil, tableta y escritorio), probado a 375 px sin scroll horizontal; navegación real entre 6 páginas con estado activo (`aria-current`).
+- Formulario con validación en línea, confirmación con referencia (`COL-xxxx`) y **envío automático a WhatsApp** (`+58 414-7308002`); las solicitudes se guardan también en `localStorage` (`coliseo_reservas`).
+- Vídeos con póster y `preload="none"`, pausados automáticamente fuera de pantalla (`IntersectionObserver`).
+- Contadores animados, ticker horizontal, menú móvil y modal legal (términos, privacidad y código de honor).
+- **SEO**: `title`/`meta description`/`canonical`/Open Graph/Twitter únicos por página, `og-image` (1200×630), JSON-LD (`SportsActivityLocation` + `LocalBusiness`, `FAQPage` en inicio, `NewsArticle` + `BreadcrumbList` en cada noticia), `robots.txt` y `sitemap.xml` generado.
+- Sin dependencias de build: Tailwind por CDN con la configuración del proyecto *inline*.
 
 ## Estructura
 
 ```
 coliseo/
-├── index.html      # página lista para publicar
-├── code.html       # copia de trabajo (mismo contenido que index.html)
-├── robots.txt      # reglas para buscadores + sitemap
-├── sitemap.xml     # sitemap del sitio
-├── og-image.jpg    # imagen social 1200×630
-├── posters/        # pósteres de los vídeos (LCP)
-├── logo.png        # logo y favicon
-├── marcos.png      # foto del Sensei (original)
-├── marcos.webp     # foto del Sensei optimizada (WebP)
-├── academy.mp4     # vídeo de clases (hero)
-├── jiujitsu.mp4    # vídeo de la disciplina
-├── kickboxing.mp4
-├── boxeo.mp4
-├── mma.mp4
-├── screen.png      # captura del sitio
-├── DESIGN.md       # tokens de diseño (colores/tipografía)
+├── index.html               # inicio
+├── disciplinas.html
+├── horarios.html
+├── entrenadores.html
+├── noticias.html            # listado (renderiza noticias/noticias.json)
+├── contacto.html            # formulario + mapa
+├── noticias/
+│   ├── noticias.json        # fuente de verdad de las noticias
+│   └── img/                 # fotos de las noticias
+├── tools/
+│   └── generar-noticias.mjs # genera noticias/<slug>.html + sitemap.xml
+├── robots.txt
+├── sitemap.xml
+├── og-image.jpg             # imagen social 1200×630
+├── posters/                 # pósteres de los vídeos (LCP)
+├── logo.png                 # logo y favicon
+├── marcos.png / marcos.webp # foto del Sensei
+├── academy.mp4, jiujitsu.mp4, kickboxing.mp4, boxeo.mp4, mma.mp4
+├── DESIGN.md                # tokens de diseño (colores/tipografía)
 └── README.md
 ```
 
 ## Ejecutar localmente
 
-Abrir `index.html` en el navegador, o con el servidor local de XAMPP/Apache:
+Servir por HTTP (el listado de noticias usa `fetch`):
 
 ```bash
 # Apache de XAMPP apuntando a C:\xampp\htdocs\webs-negocios\coliseo
 http://localhost/coliseo/index.html
 ```
+
+Abrir con `file://` funciona para todo excepto el listado de noticias.
 
 ## Despliegue
 
@@ -87,4 +104,4 @@ vercel --prod
 
 - **WhatsApp / Teléfono:** +58 414-7308002
 - **Dirección:** C.C. Murachi, final del pasillo central, locales 11 y 12, Sector Las Acacias, Valera
-- **Horario:** Lun–Vie 06:30–22:00 · Sáb 08:30–15:00 · Dom 10:00–13:00 (VET, UTC-4)
+- **Horarios:** Lun–Vie Kickboxing/Boxeo 7:30 AM · 9:00 AM · 10:00 AM · 4:00 PM · 6:00 PM · Kickboxing niños 5:00 PM · Jiu-Jitsu 7:30–9:00 PM — Sáb MMA 11:00 AM–1:00 PM

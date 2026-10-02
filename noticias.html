@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noticias, torneos y alumnos destacados | Academia El Coliseo Valera</title>
+<meta content="Noticias de El Coliseo: torneos ganados, alumnos destacados en competencias y novedades de la academia de artes marciales mixtas en Valera." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-video-preview:-1" name="robots"/>
+<meta content="academia de artes marciales Valera, clases de boxeo en Valera, kickboxing Valera, jiu-jitsu brasileño Valera, MMA Valera, defensa personal niños" name="keywords"/>
+<meta content="El Coliseo - Academia de Artes Marciales Mixtas en Valera" name="author"/>
+<meta content="#08080a" name="theme-color"/>
+<link href="https://coliseo-gamma.vercel.app/noticias.html" rel="canonical"/>
+<meta content="Noticias, torneos y alumnos destacados | Academia El Coliseo Valera" property="og:title"/>
+<meta content="Noticias de El Coliseo: torneos ganados, alumnos destacados en competencias y novedades de la academia de artes marciales mixtas en Valera." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://coliseo-gamma.vercel.app/noticias.html" property="og:url"/>
+<meta content="https://coliseo-gamma.vercel.app/og-image.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="El Coliseo - Academia de Artes Marciales Mixtas en Valera" property="og:image:alt"/>
+<meta content="es_VE" property="og:locale"/>
+<meta content="El Coliseo" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Noticias, torneos y alumnos destacados | Academia El Coliseo Valera" name="twitter:title"/>
+<meta content="Noticias de El Coliseo: torneos ganados, alumnos destacados en competencias y novedades de la academia de artes marciales mixtas en Valera." name="twitter:description"/>
+<meta content="https://coliseo-gamma.vercel.app/og-image.jpg" name="twitter:image"/>
+<link href="logo.png" rel="icon" type="image/png"/><link href="logo.png" rel="apple-touch-icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&amp;family=Oswald:wght@400;500;600;700;800&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html { scroll-behavior: smooth; scroll-padding-top: 9.5rem; }
+    html, body { margin: 0; padding: 0; background-color: #08080a; }
+    body { overscroll-behavior: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #08080a; }
+  ::-webkit-scrollbar-thumb { background: #dc2626; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes reveal-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .marquee-track { animation: marquee 28s linear infinite; }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+  [data-bar] > span { transform-origin: left; transform: scaleX(0); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+  [data-bar].is-visible > span { transform: scaleX(1); }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 2px;
+    background: #dc2626; box-shadow: 0 0 8px #dc2626; transform: scaleX(0); transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); }
+  .nav-link.is-active { color: #fff; }
+  :focus-visible { outline: 2px solid #dc2626; outline-offset: 2px; }
+  select { background-image: none; }
+  .field-error { box-shadow: inset 3px 0 0 0 #dc2626; border-color: #dc2626 !important; }
+  .is-hidden { display: none !important; }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  .faq-icon { transition: transform .25s ease; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+
+  .clip-angle {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  }
+  .clip-angle-left {
+    clip-path: polygon(18px 0, 100% 0, 100% 100%, 0 100%, 0 18px);
+  }
+  .clip-badge {
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .clip-tag {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+  .text-stroke-red {
+    -webkit-text-stroke: 1.5px rgba(220, 38, 38, 0.45);
+    color: transparent;
+  }
+  .text-stroke-white {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    color: transparent;
+  }
+  .red-scanline {
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#ffb4ab",
+          "primary-container": "#dc2626",
+          "crimson-neon": "#ef4444",
+          "crimson-deep": "#991b1b",
+          "background": "#08080a",
+          "surface": "#121214",
+          "surface-container-lowest": "#0d0d0f",
+          "surface-container-low": "#16161a",
+          "surface-container": "#1a1a1f",
+          "surface-container-high": "#222228",
+          "surface-container-highest": "#2e2e36",
+          "on-surface": "#e5e1e4",
+          "on-surface-variant": "#a1a1aa",
+          "secondary": "#a1a1aa",
+          "tactical-grey": "#26262b",
+          "steel": "#71717a",
+          "tertiary": "#f7be1d",
+          "tertiary-fixed-dim": "#f7be1d",
+          "gold": "#eab308",
+        },
+        fontSize: {
+          "display": ["72px", { lineHeight: "76px", fontWeight: "700", letterSpacing: "-0.02em" }],
+          "display-mobile": ["48px", { lineHeight: "52px", fontWeight: "700", letterSpacing: "-0.01em" }],
+          "headline-lg": ["40px", { lineHeight: "46px", fontWeight: "600", letterSpacing: "-0.01em" }],
+          "headline-md": ["28px", { lineHeight: "34px", fontWeight: "600" }],
+          "headline-sm": ["22px", { lineHeight: "28px", fontWeight: "500", letterSpacing: "0.02em" }],
+          "title": ["18px", { lineHeight: "24px", fontWeight: "600", letterSpacing: "0.04em" }],
+          "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em" }],
+          "body-md": ["15px", { lineHeight: "22px" }],
+          "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em" }],
+          "label-lg": ["14px", { lineHeight: "18px", fontWeight: "600", letterSpacing: "0.08em" }],
+          "label-md": ["12px", { lineHeight: "16px", fontWeight: "500", letterSpacing: "0.1em" }],
+          "label-sm": ["10px", { lineHeight: "14px", fontWeight: "500", letterSpacing: "0.12em" }],
+        },
+        fontFamily: {
+          "display": ["Oswald", "sans-serif"],
+          "headline-lg": ["Oswald", "sans-serif"],
+          "headline-md": ["Oswald", "sans-serif"],
+          "headline-sm": ["Oswald", "sans-serif"],
+          "title": ["Oswald", "sans-serif"],
+          "label-lg": ["Oswald", "sans-serif"],
+          "label-md": ["Oswald", "sans-serif"],
+          "label-sm": ["Oswald", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "mono": ["Space Mono", "monospace"],
+        }
+      },
+    },
+  }
+</script>
+
+</head>
+<body class="bg-[#08080a] text-on-surface antialiased selection:bg-primary-container selection:text-white font-body-md overflow-x-hidden">
+<!-- HEADER / NAV BAR -->
+<header class="sticky top-0 w-full z-40 bg-[#08080a]/90 backdrop-blur-xl border-b border-red-950/40 transition-all">
+<div class="h-28 sm:h-36 w-full max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group relative" href="index.html" aria-label="Coliseo - Volver al inicio">
+<div class="relative">
+<div class="absolute -inset-1 bg-red-600/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img class="relative h-24 sm:h-32 w-auto object-contain" src="logo.png" width="278" height="292" fetchpriority="high" decoding="async" alt="El Coliseo - Academia de artes marciales en Valera"/>
+</div>
+
+</a>
+<!-- Tactical Navigation Menu -->
+<nav id="main-nav" class="hidden lg:flex items-center gap-3 xl:gap-8 text-[10px] xl:text-[11px] font-label-md tracking-[0.14em] uppercase whitespace-nowrap" aria-label="Navegación principal">
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="inicio" href="index.html">
+<span class="hidden xl:inline text-primary-container mr-1 text-[10px] font-mono">01.</span>INICIO
+</a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="disciplinas" href="disciplinas.html">
+<span class="hidden xl:inline text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">02.</span>DISCIPLINAS
+      </a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="horarios" href="horarios.html">
+<span class="hidden xl:inline text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">03.</span>HORARIOS
+      </a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="entrenadores" href="entrenadores.html">
+<span class="hidden xl:inline text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">04.</span>ENTRENADORES
+      </a>
+<a class="nav-link is-active text-white transition-colors py-1 group" data-target="noticias" href="noticias.html" aria-current="page">
+<span class="hidden xl:inline text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">05.</span>NOTICIAS
+</a>
+<a class="nav-link text-neutral-400 hover:text-white transition-colors py-1 group" data-target="contacto" href="contacto.html">
+<span class="hidden xl:inline text-neutral-600 group-hover:text-primary-container transition-colors mr-1 text-[10px] font-mono">06.</span>CONTACTO
+      </a>
+</nav>
+<!-- Header CTA -->
+<div class="flex items-center gap-3">
+<a class="relative hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary-container hover:bg-red-600 text-white text-[11px] font-label-lg tracking-[0.18em] uppercase font-bold clip-angle whitespace-nowrap transition-all duration-300 shadow-[0_0_24px_rgba(220,38,38,0.45)] hover:shadow-[0_0_35px_rgba(239,68,68,0.65)] active:scale-95 group" href="contacto.html#agenda-clase">
+<span class="whitespace-nowrap">CLASE DE PRUEBA</span>
+<span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">bolt</span>
+</a>
+<button id="nav-toggle" class="lg:hidden w-11 h-11 flex items-center justify-center border border-white/10 text-on-surface hover:border-primary-container hover:text-primary-container transition-colors" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<div id="mobile-nav" class="is-hidden lg:hidden border-t border-red-950/40 bg-[#08080a] px-6 py-4">
+<ul class="flex flex-col gap-1 text-[13px] font-label-md tracking-[0.18em] uppercase">
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="inicio" href="index.html"><span class="font-mono text-[10px] text-primary-container">01.</span>INICIO</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="disciplinas" href="disciplinas.html"><span class="font-mono text-[10px] text-neutral-600">02.</span>DISCIPLINAS</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="horarios" href="horarios.html"><span class="font-mono text-[10px] text-neutral-600">03.</span>HORARIOS</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="entrenadores" href="entrenadores.html"><span class="font-mono text-[10px] text-neutral-600">04.</span>ENTRENADORES &amp; DOJO</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="noticias" href="noticias.html" aria-current="page"><span class="font-mono text-[10px] text-neutral-600">05.</span>NOTICIAS</a></li>
+<li><a class="mobile-link flex items-center gap-3 py-3 border-b border-white/5 text-neutral-300 hover:text-primary-container" data-target="contacto" href="contacto.html"><span class="font-mono text-[10px] text-neutral-600">06.</span>CONTACTO</a></li>
+<li class="pt-4"><a class="flex items-center justify-center gap-2 w-full py-3 bg-primary-container text-white font-label-lg tracking-[0.2em] uppercase" href="contacto.html#agenda-clase">CLASE DE PRUEBA<span class="material-symbols-outlined text-[16px]">bolt</span></a></li>
+</ul>
+</div>
+</header>
+<main class="w-full bg-[#08080a]"><div class="flex flex-col w-full">
+<!-- NOTICIAS -->
+<section class="w-full bg-surface-container-lowest py-20 relative" id="noticias">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+<div>
+<span class="font-mono text-label-sm tracking-widest text-primary uppercase block mb-2">// FEED // NOTICIAS DEL DOJO</span>
+<h1 class="font-headline-lg text-headline-lg uppercase text-on-surface">NOTICIAS Y COMPETICIONES</h1>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">Torneos ganados, alumnos destacados en competencias y novedades de la academia de artes marciales mixtas en Valera.</p>
+</div>
+<p class="font-mono text-label-sm text-secondary tracking-widest uppercase">ORDENADAS POR FECHA</p>
+</div>
+<div id="news-filters" class="flex flex-wrap gap-2 mb-10">
+<button class="news-filter px-4 py-2 bg-primary-container text-white font-mono text-[11px] tracking-widest uppercase transition-colors" type="button" data-filter="todas">Todas</button>
+<button class="news-filter px-4 py-2 bg-surface-container text-secondary hover:text-white font-mono text-[11px] tracking-widest uppercase transition-colors" type="button" data-filter="Torneo">Torneos</button>
+<button class="news-filter px-4 py-2 bg-surface-container text-secondary hover:text-white font-mono text-[11px] tracking-widest uppercase transition-colors" type="button" data-filter="Alumno destacado">Alumnos destacados</button>
+<button class="news-filter px-4 py-2 bg-surface-container text-secondary hover:text-white font-mono text-[11px] tracking-widest uppercase transition-colors" type="button" data-filter="Academia">Academia</button>
+</div>
+<div id="news-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+<div id="news-empty" class="is-hidden bg-surface-container border border-surface-container-highest p-10 text-center">
+<span class="material-symbols-outlined text-primary-container text-[42px]">emoji_events</span>
+<h2 class="font-headline-md text-headline-md uppercase text-on-surface mt-3">PRÓXIMAMENTE</h2>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-xl mx-auto">Estamos preparando el reporte de torneos y alumnos destacados. Avísanos por WhatsApp y te avisamos primero cuando publiquemos una noticia.</p>
+<a class="inline-flex items-center gap-2 mt-5 px-6 py-3 bg-primary-container hover:bg-crimson-neon text-white font-label-md uppercase tracking-widest transition-colors" href="https://wa.me/584147308002?text=Hola%20Coliseo" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[16px]">chat</span>WHATSAPP</a>
+</div>
+<p id="news-error" class="is-hidden bg-surface-container border border-primary-container/40 p-8 text-center font-body-md text-body-md text-secondary">No fue posible cargar las noticias en este momento. Recarga la página o escríbenos por WhatsApp.</p>
+</div>
+</section>
+</div></main>
+<!-- MASTER COLISEO FOOTER -->
+<footer class="w-full bg-[#060608] border-t border-red-950/40 text-neutral-400">
+<div class="w-full max-w-7xl mx-auto px-6 sm:px-10 pt-20 pb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pb-16 border-b border-white/5">
+<!-- Brand & Manifesto -->
+<div class="space-y-5">
+<a class="inline-block opacity-95 hover:opacity-100 transition-opacity" href="index.html" aria-label="Coliseo - Inicio">
+<img class="h-48 w-auto object-contain" src="logo.png" width="278" height="292" loading="lazy" decoding="async" alt="Logo de El Coliseo, academia de artes marciales en Valera"/>
+</a>
+<p class="text-xs text-neutral-400 font-light leading-relaxed">
+          Centro de alto rendimiento dedicado a la disciplina y la excelencia marcial. Forjamos el carácter mediante el rigor técnico y el honor en el combate.
+        </p>
+<div class="flex items-center gap-3 pt-2">
+<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="https://wa.me/584147308002?text=Hola%20Coliseo" target="_blank" rel="noopener" aria-label="WhatsApp">
+<span class="material-symbols-outlined text-sm">sports_mma</span>
+</a>
+<a class="w-9 h-9 bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 transition-all clip-angle" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Schedule -->
+<div class="space-y-4">
+<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// HORARIOS DE DOJO</h3>
+<ul class="space-y-2.5 text-xs text-neutral-400 font-light font-mono">
+<li><span class="text-white font-semibold">KICKBOXING / BOXEO:</span> LUN-VIE 7:30 AM · 9:00 AM · 10:00 AM · 4:00 PM · 6:00 PM</li>
+<li><span class="text-white font-semibold">KICKBOXING NIÑOS:</span> LUN-VIE 5:00 PM (6-10 AÑOS)</li>
+<li><span class="text-white font-semibold">JIU-JITSU BRASILEÑO:</span> LUN-VIE 7:30 PM – 9:00 PM (+12 AÑOS)</li>
+<li><span class="text-white font-semibold">MMA:</span> SÁB 11:00 AM – 1:00 PM (+12 AÑOS)</li>
+<li class="pt-2 text-primary-container text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+            CUPOS LIMITADOS · INFORMACIÓN AL 0414 7308002
+          </li>
+</ul>
+</div>
+<!-- Location -->
+<div class="space-y-4">
+<h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white font-bold">// UBICACIÓN &amp; CONTACTO</h3>
+<div class="space-y-3 text-xs text-neutral-400 font-light font-mono">
+<a class="flex items-start gap-2 hover:text-white transition-colors" href="https://www.openstreetmap.org/?mlat=9.3176&amp;mlon=-70.6147#map=15/9.3176/-70.6147" target="_blank" rel="noopener">
+<span class="material-symbols-outlined text-primary-container text-sm mt-0.5">location_on</span>
+<span>C.C. Murachi, locales 11 y 12, Sector Las Acacias, Valera</span>
+</a>
+<a class="flex items-center gap-2 hover:text-white transition-colors" href="tel:+584147308002">
+<span class="material-symbols-outlined text-primary-container text-sm">call</span>
+<span>+58 414-7308002</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Official Federations Strip -->
+<div class="py-8 border-b border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+<span class="text-[11px] font-mono uppercase tracking-widest text-neutral-500 font-bold">DISCIPLINAS IMPARTIDAS</span>
+<div class="flex flex-wrap items-center gap-6 text-[11px] font-mono uppercase tracking-widest text-neutral-400">
+<span class="hover:text-white transition-colors">BOXEO</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">KICKBOXING</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">JIU-JITSU BRASILEÑO</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">MMA</span>
+<span class="text-neutral-700">•</span>
+<span class="hover:text-white transition-colors">DEFENSA PERSONAL</span>
+</div>
+</div>
+<!-- FOOTER NAV LINKS -->
+<div class="py-6 border-b border-white/5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] font-mono uppercase tracking-widest text-neutral-400">
+<a class="hover:text-white transition-colors" href="index.html">Inicio</a>
+<a class="hover:text-white transition-colors" href="disciplinas.html">Disciplinas</a>
+<a class="hover:text-white transition-colors" href="horarios.html">Horarios</a>
+<a class="hover:text-white transition-colors" href="entrenadores.html">Entrenadores</a>
+<a class="hover:text-white transition-colors" href="noticias.html">Noticias</a>
+<a class="hover:text-white transition-colors" href="contacto.html">Contacto</a>
+</div>
+<!-- Copyright & Legal Links -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-widest text-neutral-500">
+<p>© <span id="year">2025</span> COLISEO MARTIAL ARTS ACADEMY. TODOS LOS DERECHOS RESERVADOS.</p>
+<div class="flex items-center gap-6">
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="terminos">Términos del Dojo</button>
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="privacidad">Política de Privacidad</button>
+<button class="hover:text-neutral-300 transition-colors" type="button" data-legal="honor">Código de Honor</button>
+</div>
+</div>
+</div>
+</footer>
+<!-- LEGAL MODAL -->
+<div id="legal-modal" class="is-hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="legal-title">
+<div class="w-full max-w-2xl bg-[#121215] border border-primary-container shadow-[0_0_40px_-8px_rgba(220,38,38,0.45)] max-h-[85vh] overflow-y-auto">
+<div class="flex items-center justify-between px-6 py-4 border-b border-surface-container-highest sticky top-0 bg-[#121215]">
+<h3 id="legal-title" class="font-title text-title uppercase text-on-surface"></h3>
+<button id="legal-close" class="w-9 h-9 flex items-center justify-center border border-white/10 text-neutral-400 hover:text-primary-container hover:border-primary-container transition-colors" type="button" aria-label="Cerrar"><span class="material-symbols-outlined text-[18px]">close</span></button>
+</div>
+<div id="legal-body" class="px-6 py-6 space-y-4 font-body-md text-body-md text-secondary leading-relaxed"></div>
+</div>
+</div>
+<script>
+(function () {
+"use strict";
+
+  /* ---------- Mobile navigation ---------- */
+  var toggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  if (toggle && mobileNav) {
+    toggle.addEventListener("click", function () {
+      var open = !mobileNav.classList.contains("is-hidden");
+      mobileNav.classList.toggle("is-hidden", open);
+      toggle.setAttribute("aria-expanded", String(!open));
+      toggle.querySelector(".material-symbols-outlined").textContent = open ? "menu" : "close";
+    });
+    mobileNav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        mobileNav.classList.add("is-hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.querySelector(".material-symbols-outlined").textContent = "menu";
+      });
+    });
+  }
+
+  /* ---------- Legal modal ---------- */
+  var LEGAL = {
+    terminos: {
+      title: "Términos del Dojo",
+      body: "<p>El acceso a las instalaciones de Coliseo Martial Arts Academy implica la aceptación de estas condiciones:</p>" +
+        "<p><strong class='text-on-surface'>1. Acceso.</strong> La membresía es personal e intransferible. El carné de socio debe presentarse en cada sesión. Los horarios y grupos se coordinan directamente con la academia.</p>" +
+        "<p><strong class='text-on-surface'>2. Pagos.</strong> Las cuotas se domicilian el día 1 de cada mes. La baja se solicita con 30 días de antelación y no implica penalización.</p>" +
+        "<p><strong class='text-on-surface'>3. Material.</strong> Kimono, guantes y protecciones pueden prestarse gratuitamente en la primera sesión; a partir de entonces, el equipo básico es responsibilidad del alumno.</p>" +
+        "<p><strong class='text-on-surface'>4. Responsabilidad.</strong> Toda actividad física conlleva riesgo. El alumno declara estar en condiciones de salud para entrenar y exime al centro de lesiones derivadas del incumplimiento de las indicaciones del cuerpo técnico.</p>"
+    },
+    privacidad: {
+      title: "Política de Privacidad",
+      body: "<p>Responsable: Coliseo Martial Arts Academy · Valera, Estado Trujillo, Venezuela.</p>" +
+        "<p><strong class='text-on-surface'>Datos recabados.</strong> Nombre, teléfono y preferencias de entrenamiento, facilitados voluntariamente a través del formulario de clase de prueba.</p>" +
+        "<p><strong class='text-on-surface'>Finalidad.</strong> Gestionar la solicitud de clase y contactar para confirmar la reserva.</p>" +
+        "<p><strong class='text-on-surface'>Conservación.</strong> Los datos se guardan mientras exista relación con el alumno y pueden suprimirse en cualquier momento solicitándolo por WhatsApp al +58 414-7308002.</p>" +
+        "<p><strong class='text-on-surface'>Derechos.</strong> Puedes ejercer acceso, rectificación, oposición y portabilidad escribiéndonos por WhatsApp con el asunto «LOPD».</p>"
+    },
+    honor: {
+      title: "Código de Honor",
+      body: "<p><strong class='text-on-surface'>Artículo I · Saludo de tatami.</strong> Se saluda al entrar y salir del tatami, y al compañero con el que se entrena.</p>" +
+        "<p><strong class='text-on-surface'>Artículo II · Constancia absoluta.</strong> La disciplina está por encima de la motivación. Se repite el fundamento hasta la maestría.</p>" +
+        "<p><strong class='text-on-surface'>Artículo III · Lealtad al equipo.</strong> Nadie asciende solo. Se cuida al compañero por encima del resultado.</p>" +
+        "<p><strong class='text-on-surface'>Artículo IV · Perfección mecánica.</strong> Se rechaza la fuerza bruta desordenada: cada palanca responde a un principio anatómico exacto.</p>" +
+        "<p><strong class='text-on-surface'>Artículo V · Cero ego.</strong> La violencia fuera del tatami no tiene cabida en este centro.</p>"
+    }
+  };
+  var modal = document.getElementById("legal-modal");
+  document.querySelectorAll("[data-legal]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var doc = LEGAL[btn.dataset.legal];
+      if (!doc || !modal) return;
+      document.getElementById("legal-title").textContent = doc.title;
+      document.getElementById("legal-body").innerHTML = doc.body;
+      modal.classList.remove("is-hidden");
+      document.body.style.overflow = "hidden";
+      document.getElementById("legal-close").focus();
+    });
+  });
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add("is-hidden");
+    document.body.style.overflow = "";
+  }
+  var closeBtn = document.getElementById("legal-close");
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+
+  /* ---------- Misc ---------- */
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
+<script>
+(function () {
+"use strict";
+var list = document.getElementById("news-list");
+if (!list) return;
+var empty = document.getElementById("news-empty");
+var errBox = document.getElementById("news-error");
+var filters = Array.prototype.slice.call(document.querySelectorAll(".news-filter"));
+var all = [];
+var current = "todas";
+
+function esc(s) {
+  var d = document.createElement("div");
+  d.textContent = s == null ? "" : String(s);
+  return d.innerHTML;
+}
+function fmt(f) {
+  var p = String(f || "").split("-");
+  if (p.length !== 3) return f || "";
+  var d = new Date(+p[0], +p[1] - 1, +p[2]);
+  try {
+    return d.toLocaleDateString("es-VE", { day: "2-digit", month: "long", year: "numeric" });
+  } catch (e) {
+    return String(f);
+  }
+}
+function card(n) {
+  var img = n.imagen
+    ? '<img src="noticias/' + esc(n.imagen) + '" alt="' + esc(n.titulo) + '" width="800" height="450" loading="lazy" decoding="async" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"/>'
+    : '<div class="w-full h-44 bg-surface-container-highest flex items-center justify-center"><span class="material-symbols-outlined text-neutral-700 text-[42px]">emoji_events</span></div>';
+  return '<a class="group bg-surface-container hover:bg-surface-container-high transition-all duration-300 overflow-hidden flex flex-col" href="noticias/' + esc(n.slug) + '.html">' +
+    '<div class="relative h-44 overflow-hidden bg-surface-container-highest">' + img +
+    '<span class="absolute top-3 left-3 px-2 py-1 bg-primary-container text-white font-mono text-[10px] tracking-widest uppercase">' + esc(n.etiqueta) + "</span></div>" +
+    '<div class="p-6 flex flex-col gap-2 flex-1">' +
+    '<span class="font-mono text-[11px] text-secondary tracking-widest uppercase">' + esc(fmt(n.fecha)) + "</span>" +
+    '<h2 class="font-headline-md text-headline-md uppercase text-on-surface group-hover:text-primary-container transition-colors">' + esc(n.titulo) + "</h2>" +
+    '<p class="font-body-sm text-body-sm text-secondary leading-relaxed">' + esc(n.resumen) + "</p>" +
+    '<span class="mt-auto pt-3 inline-flex items-center gap-1 font-mono text-[11px] text-primary uppercase tracking-widest">Leer noticia<span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>' +
+    "</div></a>";
+}
+function render() {
+  var items = all.filter(function (n) { return current === "todas" || n.etiqueta === current; });
+  if (!items.length) {
+    list.innerHTML = "";
+    empty.classList.remove("is-hidden");
+    return;
+  }
+  empty.classList.add("is-hidden");
+  list.innerHTML = items.map(card).join("");
+}
+filters.forEach(function (b) {
+  b.addEventListener("click", function () {
+    current = b.dataset.filter;
+    filters.forEach(function (x) {
+      var on = x === b;
+      x.classList.toggle("bg-primary-container", on);
+      x.classList.toggle("text-white", on);
+      x.classList.toggle("bg-surface-container", !on);
+      x.classList.toggle("text-secondary", !on);
+    });
+    render();
+  });
+});
+fetch("noticias/noticias.json", { cache: "no-store" })
+  .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+  .then(function (data) {
+    all = (data.noticias || [])
+      .filter(function (n) { return n && n.slug && n.titulo; })
+      .sort(function (a, b) { return String(b.fecha || "").localeCompare(String(a.fecha || "")); });
+    if (!all.length) { empty.classList.remove("is-hidden"); return; }
+    render();
+  })
+  .catch(function () {
+    list.innerHTML = "";
+    if (errBox) errBox.classList.remove("is-hidden");
+  });
+})();
+</script>
+</body></html>

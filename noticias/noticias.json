@@ -1,0 +1,16 @@
+{
+  "_plantilla": {
+    "slug": "torneo-ejemplo-2026",
+    "titulo": "Título de la noticia",
+    "fecha": "2026-10-02",
+    "etiqueta": "Torneo",
+    "resumen": "Resumen de una o dos líneas para la tarjeta y la meta description.",
+    "contenido": [
+      "Primer párrafo del cuerpo de la noticia.",
+      "Segundo párrafo del cuerpo de la noticia."
+    ],
+    "imagen": "img/torneo-ejemplo-2026.jpg",
+    "destacada": false
+  },
+  "noticias": []
+}
